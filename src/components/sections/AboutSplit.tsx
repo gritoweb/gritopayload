@@ -1,0 +1,23 @@
+import React from 'react'
+
+type AboutSplitProps = {
+  media?: React.ReactNode
+  children: React.ReactNode
+}
+
+export function AboutSplit({ media, children }: AboutSplitProps) {
+  return (
+    <section className="px-6 md:px-12 py-20">
+      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-14">
+        {media && (
+          <div className="shrink-0 w-full lg:w-auto flex justify-center">
+            {media}
+          </div>
+        )}
+        <div className="flex flex-col gap-4 flex-1">
+          {children}
+        </div>
+      </div>
+    </section>
+  )
+}

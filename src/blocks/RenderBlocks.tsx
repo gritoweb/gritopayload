@@ -3,6 +3,12 @@ import React, { Fragment } from 'react'
 import type { Page } from '@/payload-types'
 
 import { FaqBlockComponent } from '@/blocks/FaqBlock/Component'
+import { SectionAboutComponent } from '@/blocks/SectionAbout/Component'
+import { SectionLogoCloudComponent } from '@/blocks/SectionLogoCloud/Component'
+import { SectionProcessComponent } from '@/blocks/SectionProcess/Component'
+import { SectionProjectsComponent } from '@/blocks/SectionProjects/Component'
+import { SectionServicesComponent } from '@/blocks/SectionServices/Component'
+import { SectionStatsComponent } from '@/blocks/SectionStats/Component'
 import { SectionTestimonialsComponent } from '@/blocks/SectionTestimonials/Component'
 import { SectionCtaComponent } from '@/blocks/SectionCta/Component'
 import { ContactSectionComponent } from '@/blocks/ContactSection/Component'
@@ -14,6 +20,12 @@ import { BlogListingComponent } from '@/blocks/BlogListing/Component'
 
 const blockComponents = {
   faqBlock: FaqBlockComponent,
+  homeSectionAbout: SectionAboutComponent,
+  homeSectionLogoCloud: SectionLogoCloudComponent,
+  homeSectionProcess: SectionProcessComponent,
+  homeSectionProjects: SectionProjectsComponent,
+  homeSectionServices: SectionServicesComponent,
+  homeSectionStats: SectionStatsComponent,
   homeSectionTestimonials: SectionTestimonialsComponent,
   homeSectionCta: SectionCtaComponent,
   contactSection: ContactSectionComponent,

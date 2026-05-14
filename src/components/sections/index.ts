@@ -1,1 +1,6 @@
 export { SectionTitle } from './SectionTitle'
+export { ProjectGrid } from './ProjectGrid'
+export { ServiceGrid } from './ServiceGrid'
+export { LogoCloud } from './LogoCloud'
+export { AboutSplit } from './AboutSplit'
+export { AboutFeatures } from './AboutFeatures'
