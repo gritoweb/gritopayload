@@ -182,7 +182,14 @@ export interface Media {
 export interface Page {
   id: number;
   title: string;
-  layout: (FaqBlockBlock | SectionTestimonialsBlock | SectionCtaBlock | ContactSectionBlock | SectionContactBlock)[];
+  layout: (
+    | FaqBlockBlock
+    | SectionTestimonialsBlock
+    | SectionCtaBlock
+    | ContactSectionBlock
+    | SectionContactBlock
+    | ChecklistGridBlock
+  )[];
   publishedAt?: string | null;
   /**
    * URL slug da página. Use "home" para a página inicial.
@@ -295,6 +302,25 @@ export interface SectionContactBlock {
   id?: string | null;
   blockName?: string | null;
   blockType: 'homeSectionContact';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ChecklistGridBlock".
+ */
+export interface ChecklistGridBlock {
+  eyebrow?: string | null;
+  /**
+   * Use *palavra* para laranja. Use \n para quebra de linha.
+   */
+  title: string;
+  items: {
+    title: string;
+    description?: string | null;
+    id?: string | null;
+  }[];
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'checklistGrid';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -518,6 +544,7 @@ export interface PagesSelect<T extends boolean = true> {
         homeSectionCta?: T | SectionCtaBlockSelect<T>;
         contactSection?: T | ContactSectionBlockSelect<T>;
         homeSectionContact?: T | SectionContactBlockSelect<T>;
+        checklistGrid?: T | ChecklistGridBlockSelect<T>;
       };
   publishedAt?: T;
   slug?: T;
@@ -619,6 +646,23 @@ export interface SectionContactBlockSelect<T extends boolean = true> {
   emailHref?: T;
   phone?: T;
   phoneHref?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ChecklistGridBlock_select".
+ */
+export interface ChecklistGridBlockSelect<T extends boolean = true> {
+  eyebrow?: T;
+  title?: T;
+  items?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        id?: T;
+      };
   id?: T;
   blockName?: T;
 }

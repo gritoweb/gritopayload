@@ -7,6 +7,7 @@ import { SectionTestimonialsComponent } from '@/blocks/SectionTestimonials/Compo
 import { SectionCtaComponent } from '@/blocks/SectionCta/Component'
 import { ContactSectionComponent } from '@/blocks/ContactSection/Component'
 import { SectionContactComponent } from '@/blocks/SectionContact/Component'
+import { ChecklistGridComponent } from '@/blocks/ChecklistGrid/Component'
 
 const blockComponents = {
   faqBlock: FaqBlockComponent,
@@ -14,6 +15,7 @@ const blockComponents = {
   homeSectionCta: SectionCtaComponent,
   contactSection: ContactSectionComponent,
   homeSectionContact: SectionContactComponent,
+  checklistGrid: ChecklistGridComponent,
 }
 
 export const RenderBlocks: React.FC<{
