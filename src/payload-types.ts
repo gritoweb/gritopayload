@@ -220,6 +220,8 @@ export interface Page {
     | PullQuoteBlock
     | PortfolioListingBlock
     | BlogListingBlock
+    | LatestPostsBlock
+    | LatestPortfoliosBlock
   )[];
   publishedAt?: string | null;
   /**
@@ -625,20 +627,129 @@ export interface Tag {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "LatestPostsBlock".
+ */
+export interface LatestPostsBlock {
+  eyebrow?: string | null;
+  /**
+   * Use *palavra* para laranja. Use \n para quebra de linha.
+   */
+  title?: string | null;
+  buttonLabel?: string | null;
+  buttonHref?: string | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'latestPosts';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "LatestPortfoliosBlock".
+ */
+export interface LatestPortfoliosBlock {
+  eyebrow?: string | null;
+  /**
+   * Use *palavra* para laranja. Use \n para quebra de linha.
+   */
+  title?: string | null;
+  buttonLabel?: string | null;
+  buttonHref?: string | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'latestPortfolios';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "portfolios".
  */
 export interface Portfolio {
   id: number;
   title: string;
   client: string;
+  /**
+   * Aparece abaixo do título na página do case.
+   */
   summary?: string | null;
   image: number | Media;
   tag?: (number | null) | PortfolioTag;
   tagVariant?: ('blue' | 'orange') | null;
   accent?: ('blue' | 'orange') | null;
   year?: string | null;
+  /**
+   * Exibido no card da listagem. Ex: +38% ticket médio
+   */
   result?: string | null;
+  siteUrl?: string | null;
+  /**
+   * Botão "Próximo projeto" no hero.
+   */
+  nextProjectHref?: string | null;
   publishedAt?: string | null;
+  sector?: string | null;
+  /**
+   * Ex: Site, POS, Reservas
+   */
+  deliverables?: string | null;
+  /**
+   * Ex: 10 semanas
+   */
+  duration?: string | null;
+  /**
+   * Use *palavra* para laranja.
+   */
+  challengeTitle?: string | null;
+  /**
+   * Parágrafos separados por linha em branco.
+   */
+  challengeBody?: string | null;
+  processSteps?:
+    | {
+        /**
+         * Ex: 01
+         */
+        number?: string | null;
+        title?: string | null;
+        description?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  gallery?:
+    | {
+        image: number | Media;
+        label?: string | null;
+        accent?: ('blue' | 'orange') | null;
+        id?: string | null;
+      }[]
+    | null;
+  quoteText?: string | null;
+  quoteAuthor?: string | null;
+  quoteRole?: string | null;
+  stats?:
+    | {
+        /**
+         * Ex: +38%
+         */
+        value?: string | null;
+        /**
+         * Ex: Ticket médio após redesign
+         */
+        label?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  team?:
+    | {
+        name?: string | null;
+        role?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  stack?:
+    | {
+        tool?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  relatedPortfolios?: (number | Portfolio)[] | null;
   /**
    * When enabled, the slug will auto-generate from the title field on save and autosave.
    */
@@ -924,6 +1035,8 @@ export interface PagesSelect<T extends boolean = true> {
         pullQuote?: T | PullQuoteBlockSelect<T>;
         portfolioListing?: T | PortfolioListingBlockSelect<T>;
         blogListing?: T | BlogListingBlockSelect<T>;
+        latestPosts?: T | LatestPostsBlockSelect<T>;
+        latestPortfolios?: T | LatestPortfoliosBlockSelect<T>;
       };
   publishedAt?: T;
   slug?: T;
@@ -1212,6 +1325,30 @@ export interface BlogListingBlockSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "LatestPostsBlock_select".
+ */
+export interface LatestPostsBlockSelect<T extends boolean = true> {
+  eyebrow?: T;
+  title?: T;
+  buttonLabel?: T;
+  buttonHref?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "LatestPortfoliosBlock_select".
+ */
+export interface LatestPortfoliosBlockSelect<T extends boolean = true> {
+  eyebrow?: T;
+  title?: T;
+  buttonLabel?: T;
+  buttonHref?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "portfolios_select".
  */
 export interface PortfoliosSelect<T extends boolean = true> {
@@ -1224,7 +1361,54 @@ export interface PortfoliosSelect<T extends boolean = true> {
   accent?: T;
   year?: T;
   result?: T;
+  siteUrl?: T;
+  nextProjectHref?: T;
   publishedAt?: T;
+  sector?: T;
+  deliverables?: T;
+  duration?: T;
+  challengeTitle?: T;
+  challengeBody?: T;
+  processSteps?:
+    | T
+    | {
+        number?: T;
+        title?: T;
+        description?: T;
+        id?: T;
+      };
+  gallery?:
+    | T
+    | {
+        image?: T;
+        label?: T;
+        accent?: T;
+        id?: T;
+      };
+  quoteText?: T;
+  quoteAuthor?: T;
+  quoteRole?: T;
+  stats?:
+    | T
+    | {
+        value?: T;
+        label?: T;
+        id?: T;
+      };
+  team?:
+    | T
+    | {
+        name?: T;
+        role?: T;
+        id?: T;
+      };
+  stack?:
+    | T
+    | {
+        tool?: T;
+        id?: T;
+      };
+  relatedPortfolios?: T;
   generateSlug?: T;
   slug?: T;
   updatedAt?: T;

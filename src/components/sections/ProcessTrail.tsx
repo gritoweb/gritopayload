@@ -1,47 +1,45 @@
-import React from 'react'
+import { StepBullet } from '@/home/primitives'
 
 type Step = {
   title: string
   description?: string
 }
 
-type ProcessTrailProps = {
-  steps: Step[]
+export function ProcessTrail({
+  steps = [],
+  highlightIndex = -1,
+  className = '',
+}: {
+  steps?: Step[]
   highlightIndex?: number
-}
+  className?: string
+}) {
+  const root = ['relative pt-14 pb-3', className].filter(Boolean).join(' ')
 
-export function ProcessTrail({ steps, highlightIndex = -1 }: ProcessTrailProps) {
   return (
-    <ol className="relative m-0 p-0 list-none flex flex-col gap-0">
-      {steps.map((step, i) => {
-        const isHighlighted = i === highlightIndex
-        return (
-          <li key={i} className="relative flex gap-6 pb-10 last:pb-0">
-            {/* Vertical line */}
-            {i < steps.length - 1 && (
-              <span className="absolute left-[19px] top-10 bottom-0 w-px bg-line" aria-hidden="true" />
-            )}
-            {/* Step number bubble */}
-            <div
-              className={`shrink-0 w-10 h-10 rounded-full flex items-center justify-center font-display font-bold text-sm z-10 ${
-                isHighlighted
-                  ? 'bg-orange text-white'
-                  : 'bg-blue/10 text-blue'
-              }`}
+    <div className={root}>
+      <div
+        aria-hidden="true"
+        className="hidden md:block absolute left-15 right-15 top-21.5 h-0.75 bg-paper-dim"
+      />
+      <ol className="flex flex-col md:flex-row md:justify-between gap-12 md:gap-2 list-none p-0 m-0 relative">
+        {steps.map((step, index) => (
+          <li key={step.title} className="flex-1 px-2 text-center">
+            <StepBullet
+              variant={index === highlightIndex ? 'orange' : 'blue'}
+              className="mx-auto"
             >
-              {i + 1}
-            </div>
-            <div className="flex flex-col gap-1 pt-1.5">
-              <h3 className={`m-0 font-display font-bold text-base ${isHighlighted ? 'text-orange' : 'text-ink'}`}>
-                {step.title}
-              </h3>
-              {step.description && (
-                <p className="m-0 font-body text-sm text-mute leading-relaxed">{step.description}</p>
-              )}
-            </div>
+              {index + 1}
+            </StepBullet>
+            <p className="mt-3.5 m-0 font-display font-bold text-base">{step.title}</p>
+            {step.description && (
+              <p className="mt-1.5 m-0 text-sm text-mute max-w-56 mx-auto">
+                {step.description}
+              </p>
+            )}
           </li>
-        )
-      })}
-    </ol>
+        ))}
+      </ol>
+    </div>
   )
 }

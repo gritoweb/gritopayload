@@ -73,7 +73,7 @@ function Tag({ children, index }: { children: React.ReactNode; index: number }) 
   return <span className={`${tagBase} ${variant}`}>{children}</span>
 }
 
-function PostCard({ post, index }: { post: PostItem; index: number }) {
+export function PostCard({ post, index }: { post: PostItem; index: number }) {
   const image = post.image
   const imageUrl =
     image && typeof image === 'object' && image.url ? image.url : null
@@ -103,14 +103,14 @@ function PostCard({ post, index }: { post: PostItem; index: number }) {
       <div className="px-6 pt-5 pb-6 flex flex-col gap-2.5">
         <div className="flex items-center gap-2.5">
           {post.categoryLabel && <Tag index={index}>{post.categoryLabel}</Tag>}
-          {post.date && (
-            <time dateTime={post.date} className="font-mono text-xs text-mute">
-              {new Intl.DateTimeFormat('pt-BR', { day: '2-digit', month: 'short', year: 'numeric' }).format(
-                new Date(post.date),
-              )}
-            </time>
-          )}
         </div>
+        {post.date && (
+          <time dateTime={post.date} className="font-mono text-xs text-mute">
+            {new Intl.DateTimeFormat('pt-BR', { day: '2-digit', month: 'short', year: 'numeric' }).format(
+              new Date(post.date),
+            )}
+          </time>
+        )}
         <h3 className="m-0 font-bold text-[22px] leading-tight">{post.title}</h3>
         {post.excerpt && <p className="m-0 text-sm text-mute line-clamp-3">{post.excerpt}</p>}
         <span className="mt-2 font-display font-medium text-sm text-blue inline-flex items-center gap-1.5">
@@ -299,13 +299,19 @@ export function BlogListingClient({
         )}
 
         {slice.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+          <div key={safePage} className="grid grid-cols-1 md:grid-cols-3 gap-5">
             {slice.map((post, i) => (
-              <PostCard key={post.id} post={post} index={(safePage - 1) * postsPerPage + i} />
+              <div
+                key={post.id}
+                className="animate-in fade-in slide-in-from-bottom-4 duration-500 fill-mode-both motion-reduce:animate-none"
+                style={{ animationDelay: `${i * 60}ms` }}
+              >
+                <PostCard post={post} index={(safePage - 1) * postsPerPage + i} />
+              </div>
             ))}
           </div>
         ) : (
-          <p className="text-center text-mute py-20">Nenhum post encontrado.</p>
+          <p className="text-center text-mute py-20 animate-in fade-in duration-300 motion-reduce:animate-none">Nenhum post encontrado.</p>
         )}
 
         {totalPages > 1 && (

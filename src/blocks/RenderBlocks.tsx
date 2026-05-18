@@ -17,6 +17,8 @@ import { ChecklistGridComponent } from '@/blocks/ChecklistGrid/Component'
 import { PullQuoteComponent } from '@/blocks/PullQuote/Component'
 import { PortfolioListingComponent } from '@/blocks/PortfolioListing/Component'
 import { BlogListingComponent } from '@/blocks/BlogListing/Component'
+import { LatestPostsComponent } from '@/blocks/LatestPosts/Component'
+import { LatestPortfoliosComponent } from '@/blocks/LatestPortfolios/Component'
 
 const blockComponents = {
   faqBlock: FaqBlockComponent,
@@ -34,6 +36,8 @@ const blockComponents = {
   pullQuote: PullQuoteComponent,
   portfolioListing: PortfolioListingComponent,
   blogListing: BlogListingComponent,
+  latestPosts: LatestPostsComponent,
+  latestPortfolios: LatestPortfoliosComponent,
 }
 
 export const RenderBlocks: React.FC<{

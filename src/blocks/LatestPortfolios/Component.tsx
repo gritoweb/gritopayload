@@ -1,0 +1,83 @@
+import React from 'react'
+import { getPayload } from 'payload'
+import configPromise from '@payload-config'
+import type { LatestPortfoliosBlock, Portfolio, Media, PortfolioTag } from '@/payload-types'
+import { PortfolioCardGrid, type PortfolioItem } from '@/blocks/PortfolioListing/PortfolioListingClient'
+import { Button } from '@/components/Button'
+import { parseTitle } from '@/utilities/parseTitle'
+
+const ArrowRight = () => (
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden="true">
+    <path d="M5 12h14M13 5l7 7-7 7" />
+  </svg>
+)
+
+export const LatestPortfoliosComponent: React.FC<LatestPortfoliosBlock> = async ({
+  eyebrow,
+  title,
+  buttonLabel,
+  buttonHref,
+}) => {
+  const payload = await getPayload({ config: configPromise })
+
+  const result = await payload.find({
+    collection: 'portfolios',
+    depth: 1,
+    limit: 3,
+    overrideAccess: false,
+    sort: '-publishedAt',
+    select: {
+      title: true,
+      slug: true,
+      client: true,
+      image: true,
+      tag: true,
+      tagVariant: true,
+      accent: true,
+      year: true,
+      result: true,
+    },
+  })
+
+  const portfolios: PortfolioItem[] = (result.docs as Portfolio[]).map((p) => {
+    const image = p.image && typeof p.image === 'object' ? (p.image as Media) : null
+    const tag = p.tag && typeof p.tag === 'object' ? (p.tag as PortfolioTag) : null
+
+    return {
+      id: String(p.id),
+      title: p.title,
+      slug: p.slug,
+      client: p.client ?? null,
+      result: p.result ?? null,
+      year: p.year ?? null,
+      tagId: tag ? String(tag.id) : null,
+      tagLabel: tag?.title ?? null,
+      tagVariant: (p.tagVariant as 'blue' | 'orange') ?? 'blue',
+      accent: (p.accent as 'blue' | 'orange') ?? 'blue',
+      image,
+    }
+  })
+
+  return (
+    <section className="px-6 md:px-12 py-20">
+      <div className="max-w-7xl mx-auto">
+        <div className="flex items-end  justify-between flex-wrap gap-6 mb-10">
+          <header className="flex flex-col gap-3">
+            {eyebrow && <p className="font-eyebrow m-0">{eyebrow}</p>}
+            {title && <h2 className="m-0 text-blue">{parseTitle(title)}</h2>}
+          </header>
+          {buttonLabel && (
+            <Button variant="ghost" href={buttonHref ?? '/portfolio'} icon={<ArrowRight />}>
+              {buttonLabel}
+            </Button>
+          )}
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {portfolios.map((item) => (
+            <PortfolioCardGrid key={item.id} item={item} />
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}

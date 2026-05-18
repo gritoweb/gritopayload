@@ -17,6 +17,8 @@ import { ChecklistGrid } from '../../blocks/ChecklistGrid/config'
 import { PullQuote } from '../../blocks/PullQuote/config'
 import { PortfolioListing } from '../../blocks/PortfolioListing/config'
 import { BlogListing } from '../../blocks/BlogListing/config'
+import { LatestPosts } from '../../blocks/LatestPosts/config'
+import { LatestPortfolios } from '../../blocks/LatestPortfolios/config'
 import { hero } from '../../heros/config'
 import { populatePublishedAt } from '../../hooks/populatePublishedAt'
 import { generatePreviewPath } from '../../utilities/generatePreviewPath'
@@ -84,8 +86,10 @@ export const Pages: CollectionConfig<'pages'> = {
                 SectionContact, 
                 ChecklistGrid, 
                 PullQuote, 
-                PortfolioListing, 
-                BlogListing
+                PortfolioListing,
+                BlogListing,
+                LatestPosts,
+                LatestPortfolios,
               ],
               required: true,
               admin: {

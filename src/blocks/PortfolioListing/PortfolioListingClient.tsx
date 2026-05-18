@@ -82,7 +82,7 @@ function Tag({ children, variant = 'blue' }: { children: React.ReactNode; varian
 
 // ── Card components ───────────────────────────────────────────────────────────
 
-function PortfolioCardGrid({ item }: { item: PortfolioItem }) {
+export function PortfolioCardGrid({ item }: { item: PortfolioItem }) {
   const imageUrl = item.image?.url ?? null
   const bg = accentBg[item.accent ?? 'blue']
 
@@ -198,7 +198,7 @@ export const PortfolioListingClient: React.FC<PortfolioListingClientProps> = ({
         <div className="mb-10">
           {eyebrow && <p className="font-eyebrow m-0 mb-3">{eyebrow}</p>}
           {title && (
-            <h2 className="m-0 font-display font-bold text-h2 text-ink leading-tight">
+            <h2 className="m-0 font-display font-bold text-h2 text-blue leading-tight">
               {parseTitle(title)}
             </h2>
           )}
@@ -244,15 +244,25 @@ export const PortfolioListingClient: React.FC<PortfolioListingClientProps> = ({
 
             {/* View toggle */}
             {showViewToggle && (
-              <div className="flex items-center gap-1 rounded-full border border-line p-1" role="group" aria-label="Modo de visualização">
+              <div className="relative flex items-center gap-1 rounded-full border border-line p-1" role="group" aria-label="Modo de visualização">
+                <div
+                  aria-hidden="true"
+                  className={[
+                    'absolute top-1 bottom-1 rounded-full bg-blue',
+                    'transition-transform duration-200 ease-in-out motion-reduce:transition-none',
+                    view === 'list' ? 'translate-x-[calc(100%+4px)]' : 'translate-x-0',
+                  ].join(' ')}
+                  style={{ width: 'calc(50% - 6px)' }}
+                />
                 <button
                   onClick={() => setView('grid')}
                   aria-pressed={view === 'grid'}
                   aria-label="Grade"
                   className={[
-                    'inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full font-display font-medium text-sm cursor-pointer transition-colors duration-150 motion-reduce:transition-none',
+                    'relative z-10 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full font-display font-medium text-sm cursor-pointer',
+                    'transition-colors duration-200 motion-reduce:transition-none',
                     'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue focus-visible:ring-offset-1',
-                    view === 'grid' ? 'bg-ink text-white' : 'text-mute hover:text-ink',
+                    view === 'grid' ? 'text-white' : 'text-mute hover:text-ink',
                   ].join(' ')}
                 >
                   <GridIcon /> Grade
@@ -262,9 +272,10 @@ export const PortfolioListingClient: React.FC<PortfolioListingClientProps> = ({
                   aria-pressed={view === 'list'}
                   aria-label="Lista"
                   className={[
-                    'inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full font-display font-medium text-sm cursor-pointer transition-colors duration-150 motion-reduce:transition-none',
+                    'relative z-10 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full font-display font-medium text-sm cursor-pointer',
+                    'transition-colors duration-200 motion-reduce:transition-none',
                     'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue focus-visible:ring-offset-1',
-                    view === 'list' ? 'bg-ink text-white' : 'text-mute hover:text-ink',
+                    view === 'list' ? 'text-white' : 'text-mute hover:text-ink',
                   ].join(' ')}
                 >
                   <ListIcon /> Lista
@@ -274,26 +285,36 @@ export const PortfolioListingClient: React.FC<PortfolioListingClientProps> = ({
           </div>
         )}
 
-        {/* Grid view */}
         {view === 'grid' && (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filtered.map((item) => (
-              <PortfolioCardGrid key={item.id} item={item} />
+          <div key="grid" className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {filtered.map((item, i) => (
+              <div
+                key={item.id}
+                className="animate-in fade-in slide-in-from-bottom-4 duration-500 fill-mode-both motion-reduce:animate-none"
+                style={{ animationDelay: `${i * 60}ms` }}
+              >
+                <PortfolioCardGrid item={item} />
+              </div>
             ))}
           </div>
         )}
 
-        {/* List view */}
         {view === 'list' && (
-          <div className="flex flex-col gap-3">
-            {filtered.map((item) => (
-              <PortfolioCardList key={item.id} item={item} />
+          <div key="list" className="flex flex-col gap-3">
+            {filtered.map((item, i) => (
+              <div
+                key={item.id}
+                className="animate-in fade-in slide-in-from-bottom-3 duration-500 fill-mode-both motion-reduce:animate-none"
+                style={{ animationDelay: `${i * 50}ms` }}
+              >
+                <PortfolioCardList item={item} />
+              </div>
             ))}
           </div>
         )}
 
         {filtered.length === 0 && (
-          <div className="text-center py-20 text-mute font-display">
+          <div className="text-center py-20 text-mute font-display animate-in fade-in duration-300 motion-reduce:animate-none">
             Nenhum projeto encontrado.
           </div>
         )}
