@@ -631,7 +631,7 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   await db.run(sql`ALTER TABLE \`pages_blocks_home_section_about\` DROP COLUMN \`description\`;`)
   await db.run(sql`ALTER TABLE \`pages_blocks_home_section_about\` DROP COLUMN \`cta_label\`;`)
   await db.run(sql`ALTER TABLE \`pages_blocks_home_section_logo_cloud\` DROP COLUMN \`eyebrow\`;`)
-  await db.run(sql`ALTER TABLE \`pages_blocks_home_section_logo_cloud\` DROP COLUMN \`title\`;`)
+  // title already dropped by migration 20260518_164500
   await db.run(sql`ALTER TABLE \`pages_blocks_home_section_logo_cloud\` DROP COLUMN \`description\`;`)
   await db.run(sql`ALTER TABLE \`pages_blocks_home_section_process_steps\` DROP COLUMN \`title\`;`)
   await db.run(sql`ALTER TABLE \`pages_blocks_home_section_process_steps\` DROP COLUMN \`description\`;`)
@@ -700,7 +700,7 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   await db.run(sql`ALTER TABLE \`_pages_v_blocks_home_section_about\` DROP COLUMN \`description\`;`)
   await db.run(sql`ALTER TABLE \`_pages_v_blocks_home_section_about\` DROP COLUMN \`cta_label\`;`)
   await db.run(sql`ALTER TABLE \`_pages_v_blocks_home_section_logo_cloud\` DROP COLUMN \`eyebrow\`;`)
-  await db.run(sql`ALTER TABLE \`_pages_v_blocks_home_section_logo_cloud\` DROP COLUMN \`title\`;`)
+  // title already dropped by migration 20260518_170000
   await db.run(sql`ALTER TABLE \`_pages_v_blocks_home_section_logo_cloud\` DROP COLUMN \`description\`;`)
   await db.run(sql`ALTER TABLE \`_pages_v_blocks_home_section_process_steps\` DROP COLUMN \`title\`;`)
   await db.run(sql`ALTER TABLE \`_pages_v_blocks_home_section_process_steps\` DROP COLUMN \`description\`;`)
