@@ -1,5 +1,7 @@
 import type { Block } from 'payload'
 
+import { titleMaxWidth } from '../../fields/titleMaxWidth'
+
 export const SectionProjects: Block = {
   slug: 'homeSectionProjects',
   interfaceName: 'SectionProjectsBlock',
@@ -22,6 +24,7 @@ export const SectionProjects: Block = {
       defaultValue: 'Projetos que *colocamos pra rodar*',
       admin: { description: 'Use *palavra* para laranja. Use \\n para quebra de linha.' },
     },
+    titleMaxWidth,
     {
       name: 'portfolioLabel',
       label: 'Portfolio button — text',

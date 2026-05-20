@@ -5,12 +5,14 @@ import type { Media } from '@/payload-types'
 import { CtaBanner } from '@/components/sections/CtaBanner'
 import { Button } from '@/components/ui/Button'
 import { parseTitle } from '@/utilities/parseTitle'
+import { titleMaxWidthClass, type TitleMaxWidth } from '@/utilities/titleMaxWidthClass'
 import { ArrowIcon } from '@/components/ui/ArrowIcon'
 
 export const SectionCtaComponent: React.FC<SectionCtaBlock> = ({
   variant,
   eyebrow,
   title,
+  titleMaxWidth,
   description,
   cta1Label,
   cta1Href,
@@ -27,6 +29,7 @@ export const SectionCtaComponent: React.FC<SectionCtaBlock> = ({
       variant={(variant as 'blue' | 'orange' | 'white') ?? 'orange'}
       eyebrow={eyebrow ?? undefined}
       title={parseTitle(title)}
+      titleClassName={titleMaxWidthClass(titleMaxWidth as TitleMaxWidth | null | undefined)}
       description={description ?? undefined}
       actions={
         <>

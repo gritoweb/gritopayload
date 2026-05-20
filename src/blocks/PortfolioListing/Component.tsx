@@ -2,11 +2,13 @@ import React from 'react'
 import { getPayload } from 'payload'
 import configPromise from '@payload-config'
 import type { PortfolioListingBlock, Portfolio, Media, PortfolioTag } from '@/payload-types'
+import type { TitleMaxWidth } from '@/utilities/titleMaxWidthClass'
 import { PortfolioListingClient, type PortfolioItem, type FilterOption } from './PortfolioListingClient'
 
 export const PortfolioListingComponent: React.FC<PortfolioListingBlock> = async ({
   eyebrow,
   title,
+  titleMaxWidth,
   showFilters,
   showViewToggle,
 }) => {
@@ -69,6 +71,7 @@ export const PortfolioListingComponent: React.FC<PortfolioListingBlock> = async 
       filters={filters}
       eyebrow={eyebrow}
       title={title}
+      titleMaxWidth={titleMaxWidth as TitleMaxWidth | null | undefined}
       showFilters={showFilters ?? true}
       showViewToggle={showViewToggle ?? true}
     />

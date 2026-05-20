@@ -5,11 +5,13 @@ import type { LatestPostsBlock, Post, Tag, Media } from '@/payload-types'
 import { PostCard, type PostItem } from '@/blocks/BlogListing/BlogListingClient'
 import { Button } from '@/components/Button'
 import { parseTitle } from '@/utilities/parseTitle'
+import { titleMaxWidthClass, type TitleMaxWidth } from '@/utilities/titleMaxWidthClass'
 import { ArrowIcon } from '@/components/ui/ArrowIcon'
 
 export const LatestPostsComponent: React.FC<LatestPostsBlock> = async ({
   eyebrow,
   title,
+  titleMaxWidth,
   buttonLabel,
   buttonHref,
 }) => {
@@ -55,7 +57,15 @@ export const LatestPostsComponent: React.FC<LatestPostsBlock> = async ({
         <div className="flex items-end justify-between flex-wrap gap-6 mb-10">
           <header className="flex flex-col gap-3">
             {eyebrow && <p className="font-eyebrow m-0">{eyebrow}</p>}
-            {title && <h2 className="m-0 text-blue">{parseTitle(title)}</h2>}
+            {title && (
+              <h2
+                className={['m-0 text-blue', titleMaxWidthClass(titleMaxWidth as TitleMaxWidth | null | undefined)]
+                  .filter(Boolean)
+                  .join(' ')}
+              >
+                {parseTitle(title)}
+              </h2>
+            )}
           </header>
           {buttonLabel && (
             <Button variant="ghost" href={buttonHref ?? '/posts'} icon={<ArrowIcon size={16} />}>

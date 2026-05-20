@@ -2,6 +2,7 @@ import React from 'react'
 import type { ChecklistGridBlock } from '@/payload-types'
 import { SectionTitle } from '@/components/sections'
 import { parseTitle } from '@/utilities/parseTitle'
+import { titleMaxWidthClass, type TitleMaxWidth } from '@/utilities/titleMaxWidthClass'
 
 const CheckIcon = () => (
   <svg
@@ -22,13 +23,18 @@ const CheckIcon = () => (
 export const ChecklistGridComponent: React.FC<ChecklistGridBlock> = ({
   eyebrow,
   title,
+  titleMaxWidth,
   items,
 }) => {
   return (
     <section className="px-12 py-22">
       <div className="max-w-7xl mx-auto">
         <div className="text-center max-w-3xl mx-auto mb-14">
-          <SectionTitle eyebrow={eyebrow ?? undefined} align="center">
+          <SectionTitle
+            eyebrow={eyebrow ?? undefined}
+            align="center"
+            titleClassName={titleMaxWidthClass(titleMaxWidth as TitleMaxWidth | null | undefined)}
+          >
             {parseTitle(title)}
           </SectionTitle>
         </div>

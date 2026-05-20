@@ -242,6 +242,10 @@ export interface FaqBlockBlock {
    * Use *palavra* para laranja. Use \n para quebra de linha.
    */
   title: string;
+  /**
+   * Limita a largura do título apenas em telas ≥ 1024px (desktop).
+   */
+  titleMaxWidth: 'none' | 'sm' | 'md' | 'lg' | 'xl';
   defaultOpenIndex?: number | null;
   items: {
     question: string;
@@ -262,6 +266,10 @@ export interface SectionAboutBlock {
    * Use *palavra* para laranja. Use \n para quebra de linha.
    */
   title: string;
+  /**
+   * Limita a largura do título apenas em telas ≥ 1024px (desktop).
+   */
+  titleMaxWidth: 'none' | 'sm' | 'md' | 'lg' | 'xl';
   description: string;
   ctaLabel: string;
   ctaHref: string;
@@ -285,6 +293,10 @@ export interface SectionLogoCloudBlock {
    * Use *palavra* para laranja. Use \n para quebra de linha.
    */
   title?: string | null;
+  /**
+   * Limita a largura do título apenas em telas ≥ 1024px (desktop).
+   */
+  titleMaxWidth: 'none' | 'sm' | 'md' | 'lg' | 'xl';
   description?: string | null;
   partners: {
     logo: number | Media;
@@ -305,6 +317,10 @@ export interface SectionProcessBlock {
    * Use *palavra* para laranja. Use \n para quebra de linha.
    */
   title: string;
+  /**
+   * Limita a largura do título apenas em telas ≥ 1024px (desktop).
+   */
+  titleMaxWidth: 'none' | 'sm' | 'md' | 'lg' | 'xl';
   description?: string | null;
   /**
    * The step number that will be highlighted in orange (0 = first).
@@ -329,6 +345,10 @@ export interface SectionProjectsBlock {
    * Use *palavra* para laranja. Use \n para quebra de linha.
    */
   title: string;
+  /**
+   * Limita a largura do título apenas em telas ≥ 1024px (desktop).
+   */
+  titleMaxWidth: 'none' | 'sm' | 'md' | 'lg' | 'xl';
   portfolioLabel?: string | null;
   portfolioHref?: string | null;
   projects: {
@@ -357,6 +377,10 @@ export interface SectionServicesBlock {
    * Use *palavra* para laranja. Use \n para quebra de linha.
    */
   title?: string | null;
+  /**
+   * Limita a largura do título apenas em telas ≥ 1024px (desktop).
+   */
+  titleMaxWidth: 'none' | 'sm' | 'md' | 'lg' | 'xl';
   description?: string | null;
   services: {
     name: string;
@@ -405,6 +429,10 @@ export interface SectionTestimonialsBlock {
    * Use *palavra* para laranja. Use \n para quebra de linha.
    */
   title: string;
+  /**
+   * Limita a largura do título apenas em telas ≥ 1024px (desktop).
+   */
+  titleMaxWidth: 'none' | 'sm' | 'md' | 'lg' | 'xl';
   description?: string | null;
   ratingValue: string;
   reviewCount: string;
@@ -431,6 +459,10 @@ export interface SectionCtaBlock {
    * Use *palavra* para destacar em laranja. Use \n para quebrar linha.
    */
   title: string;
+  /**
+   * Limita a largura do título apenas em telas ≥ 1024px (desktop).
+   */
+  titleMaxWidth: 'none' | 'sm' | 'md' | 'lg' | 'xl';
   description?: string | null;
   cta1Label: string;
   cta1Href: string;
@@ -490,6 +522,10 @@ export interface ChecklistGridBlock {
    * Use *palavra* para laranja. Use \n para quebra de linha.
    */
   title: string;
+  /**
+   * Limita a largura do título apenas em telas ≥ 1024px (desktop).
+   */
+  titleMaxWidth: 'none' | 'sm' | 'md' | 'lg' | 'xl';
   items: {
     title: string;
     description?: string | null;
@@ -522,6 +558,10 @@ export interface PortfolioListingBlock {
    * Use *palavra* para laranja. Use \n para quebra de linha.
    */
   title?: string | null;
+  /**
+   * Limita a largura do título apenas em telas ≥ 1024px (desktop).
+   */
+  titleMaxWidth: 'none' | 'sm' | 'md' | 'lg' | 'xl';
   showFilters?: boolean | null;
   showViewToggle?: boolean | null;
   id?: string | null;
@@ -542,6 +582,10 @@ export interface BlogListingBlock {
    * Use *palavra* para laranja. Use \n para quebra de linha.
    */
   title?: string | null;
+  /**
+   * Limita a largura do título apenas em telas ≥ 1024px (desktop).
+   */
+  titleMaxWidth: 'none' | 'sm' | 'md' | 'lg' | 'xl';
   postsPerPage?: number | null;
   showSearch?: boolean | null;
   showFilters?: boolean | null;
@@ -622,6 +666,10 @@ export interface LatestPostsBlock {
    * Use *palavra* para laranja. Use \n para quebra de linha.
    */
   title?: string | null;
+  /**
+   * Limita a largura do título apenas em telas ≥ 1024px (desktop).
+   */
+  titleMaxWidth: 'none' | 'sm' | 'md' | 'lg' | 'xl';
   buttonLabel?: string | null;
   buttonHref?: string | null;
   id?: string | null;
@@ -638,6 +686,10 @@ export interface LatestPortfoliosBlock {
    * Use *palavra* para laranja. Use \n para quebra de linha.
    */
   title?: string | null;
+  /**
+   * Limita a largura do título apenas em telas ≥ 1024px (desktop).
+   */
+  titleMaxWidth: 'none' | 'sm' | 'md' | 'lg' | 'xl';
   buttonLabel?: string | null;
   buttonHref?: string | null;
   id?: string | null;
@@ -1038,6 +1090,7 @@ export interface PagesSelect<T extends boolean = true> {
 export interface FaqBlockBlockSelect<T extends boolean = true> {
   eyebrow?: T;
   title?: T;
+  titleMaxWidth?: T;
   defaultOpenIndex?: T;
   items?:
     | T
@@ -1056,6 +1109,7 @@ export interface FaqBlockBlockSelect<T extends boolean = true> {
 export interface SectionAboutBlockSelect<T extends boolean = true> {
   eyebrow?: T;
   title?: T;
+  titleMaxWidth?: T;
   description?: T;
   ctaLabel?: T;
   ctaHref?: T;
@@ -1077,6 +1131,7 @@ export interface SectionAboutBlockSelect<T extends boolean = true> {
 export interface SectionLogoCloudBlockSelect<T extends boolean = true> {
   eyebrow?: T;
   title?: T;
+  titleMaxWidth?: T;
   description?: T;
   partners?:
     | T
@@ -1095,6 +1150,7 @@ export interface SectionProcessBlockSelect<T extends boolean = true> {
   background?: T;
   eyebrow?: T;
   title?: T;
+  titleMaxWidth?: T;
   description?: T;
   highlightIndex?: T;
   steps?:
@@ -1114,6 +1170,7 @@ export interface SectionProcessBlockSelect<T extends boolean = true> {
 export interface SectionProjectsBlockSelect<T extends boolean = true> {
   eyebrow?: T;
   title?: T;
+  titleMaxWidth?: T;
   portfolioLabel?: T;
   portfolioHref?: T;
   projects?:
@@ -1140,6 +1197,7 @@ export interface SectionProjectsBlockSelect<T extends boolean = true> {
 export interface SectionServicesBlockSelect<T extends boolean = true> {
   eyebrow?: T;
   title?: T;
+  titleMaxWidth?: T;
   description?: T;
   services?:
     | T
@@ -1184,6 +1242,7 @@ export interface SectionStatsBlockSelect<T extends boolean = true> {
 export interface SectionTestimonialsBlockSelect<T extends boolean = true> {
   eyebrow?: T;
   title?: T;
+  titleMaxWidth?: T;
   description?: T;
   ratingValue?: T;
   reviewCount?: T;
@@ -1208,6 +1267,7 @@ export interface SectionCtaBlockSelect<T extends boolean = true> {
   variant?: T;
   eyebrow?: T;
   title?: T;
+  titleMaxWidth?: T;
   description?: T;
   cta1Label?: T;
   cta1Href?: T;
@@ -1261,6 +1321,7 @@ export interface SectionContactBlockSelect<T extends boolean = true> {
 export interface ChecklistGridBlockSelect<T extends boolean = true> {
   eyebrow?: T;
   title?: T;
+  titleMaxWidth?: T;
   items?:
     | T
     | {
@@ -1290,6 +1351,7 @@ export interface PullQuoteBlockSelect<T extends boolean = true> {
 export interface PortfolioListingBlockSelect<T extends boolean = true> {
   eyebrow?: T;
   title?: T;
+  titleMaxWidth?: T;
   showFilters?: T;
   showViewToggle?: T;
   id?: T;
@@ -1303,6 +1365,7 @@ export interface BlogListingBlockSelect<T extends boolean = true> {
   featuredPost?: T;
   eyebrow?: T;
   title?: T;
+  titleMaxWidth?: T;
   postsPerPage?: T;
   showSearch?: T;
   showFilters?: T;
@@ -1316,6 +1379,7 @@ export interface BlogListingBlockSelect<T extends boolean = true> {
 export interface LatestPostsBlockSelect<T extends boolean = true> {
   eyebrow?: T;
   title?: T;
+  titleMaxWidth?: T;
   buttonLabel?: T;
   buttonHref?: T;
   id?: T;
@@ -1328,6 +1392,7 @@ export interface LatestPostsBlockSelect<T extends boolean = true> {
 export interface LatestPortfoliosBlockSelect<T extends boolean = true> {
   eyebrow?: T;
   title?: T;
+  titleMaxWidth?: T;
   buttonLabel?: T;
   buttonHref?: T;
   id?: T;

@@ -2,6 +2,7 @@ import React from 'react'
 import type { SectionServicesBlock } from '@/payload-types'
 import { SectionTitle, ServiceGrid } from '@/components/sections'
 import { parseTitle } from '@/utilities/parseTitle'
+import { titleMaxWidthClass, type TitleMaxWidth } from '@/utilities/titleMaxWidthClass'
 import { ServiceCard } from '@/home/cards'
 
 type IconType = 'globe' | 'cart' | 'landing' | 'screen' | 'brand' | 'code'
@@ -103,6 +104,7 @@ const ServiceIcon = ({ type }: { type: IconType }) => {
 export const SectionServicesComponent: React.FC<SectionServicesBlock> = ({
   eyebrow,
   title,
+  titleMaxWidth,
   description,
   services,
 }) => {
@@ -110,7 +112,11 @@ export const SectionServicesComponent: React.FC<SectionServicesBlock> = ({
     <section className="px-12 pt-24 pb-8">
       <div className="max-w-7xl mx-auto">
         <div className="flex items-end justify-between flex-wrap gap-6 mb-10">
-          <SectionTitle eyebrow={eyebrow ?? undefined} align="left">
+          <SectionTitle
+            eyebrow={eyebrow ?? undefined}
+            align="left"
+            titleClassName={titleMaxWidthClass(titleMaxWidth as TitleMaxWidth | null | undefined)}
+          >
             {parseTitle(title)}
           </SectionTitle>
           {description && (

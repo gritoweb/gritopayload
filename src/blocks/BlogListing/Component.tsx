@@ -2,6 +2,7 @@ import React from 'react'
 import { getPayload } from 'payload'
 import configPromise from '@payload-config'
 import type { BlogListingBlock, Post, Tag, Media } from '@/payload-types'
+import type { TitleMaxWidth } from '@/utilities/titleMaxWidthClass'
 import { BlogListingClient, type PostItem, type FilterOption, type FeaturedPostItem } from './BlogListingClient'
 
 type PartialPost = Pick<Post, 'id' | 'title' | 'slug' | 'excerpt' | 'tags' | 'publishedAt' | 'featuredImage' | 'meta'>
@@ -36,6 +37,7 @@ export const BlogListingComponent: React.FC<BlogListingBlock> = async ({
   featuredPost,
   eyebrow,
   title,
+  titleMaxWidth,
   postsPerPage,
   showSearch,
   showFilters,
@@ -103,6 +105,7 @@ export const BlogListingComponent: React.FC<BlogListingBlock> = async ({
       featuredPost={featured}
       eyebrow={eyebrow}
       title={title}
+      titleMaxWidth={titleMaxWidth as TitleMaxWidth | null | undefined}
       postsPerPage={postsPerPage ?? 9}
       showSearch={showSearch ?? true}
       showFilters={showFilters ?? true}

@@ -2,12 +2,14 @@ import React from 'react'
 import type { SectionProcessBlock } from '@/payload-types'
 import { SectionTitle, ProcessTrail } from '@/components/sections'
 import { parseTitle } from '@/utilities/parseTitle'
+import { titleMaxWidthClass, type TitleMaxWidth } from '@/utilities/titleMaxWidthClass'
 import { Sparkle } from '@/home/illustrations'
 
 export const SectionProcessComponent: React.FC<SectionProcessBlock> = ({
   background,
   eyebrow,
   title,
+  titleMaxWidth,
   description,
   highlightIndex,
   steps,
@@ -25,6 +27,7 @@ export const SectionProcessComponent: React.FC<SectionProcessBlock> = ({
             eyebrow={eyebrow}
             align={isWhite ? 'left' : 'center'}
             description={description ?? undefined}
+            titleClassName={titleMaxWidthClass(titleMaxWidth as TitleMaxWidth | null | undefined)}
           >
             {parseTitle(title)}
           </SectionTitle>

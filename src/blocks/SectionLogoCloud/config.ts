@@ -1,5 +1,7 @@
 import type { Block } from 'payload'
 
+import { titleMaxWidth } from '../../fields/titleMaxWidth'
+
 export const SectionLogoCloud: Block = {
   slug: 'homeSectionLogoCloud',
   interfaceName: 'SectionLogoCloudBlock',
@@ -22,6 +24,7 @@ export const SectionLogoCloud: Block = {
       localized: true,
       admin: { description: 'Use *palavra* para laranja. Use \\n para quebra de linha.' },
     },
+    titleMaxWidth,
     {
       name: 'description',
       label: 'Description',

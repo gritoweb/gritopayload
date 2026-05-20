@@ -5,11 +5,13 @@ import type { Media } from '@/payload-types'
 import { AboutSplit, AboutFeatures } from '@/components/sections'
 import { Button } from '@/components/Button'
 import { parseTitle } from '@/utilities/parseTitle'
+import { titleMaxWidthClass, type TitleMaxWidth } from '@/utilities/titleMaxWidthClass'
 import { ArrowIcon } from '@/components/ui/ArrowIcon'
 
 export const SectionAboutComponent: React.FC<SectionAboutBlock> = ({
   eyebrow,
   title,
+  titleMaxWidth,
   description,
   ctaLabel,
   ctaHref,
@@ -33,7 +35,11 @@ export const SectionAboutComponent: React.FC<SectionAboutBlock> = ({
       }
     >
       <p className="font-eyebrow m-0 mb-2">{eyebrow}</p>
-      <h2 className="m-0 text-blue">
+      <h2
+        className={['m-0 text-blue', titleMaxWidthClass(titleMaxWidth as TitleMaxWidth | null | undefined)]
+          .filter(Boolean)
+          .join(' ')}
+      >
         {parseTitle(title)}
       </h2>
       <p className="body-text mt-4 text-ink-soft">{description}</p>

@@ -1,5 +1,7 @@
 import type { Block } from 'payload'
 
+import { titleMaxWidth } from '../../fields/titleMaxWidth'
+
 export const LatestPortfolios: Block = {
   slug: 'latestPortfolios',
   interfaceName: 'LatestPortfoliosBlock',
@@ -18,6 +20,7 @@ export const LatestPortfolios: Block = {
       defaultValue: '*Últimos projetos* que entregamos',
       admin: { description: 'Use *palavra* para laranja. Use \\n para quebra de linha.' },
     },
+    titleMaxWidth,
     {
       name: 'buttonLabel',
       label: 'Botão — texto',

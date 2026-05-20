@@ -1,5 +1,7 @@
 import type { Block } from 'payload'
 
+import { titleMaxWidth } from '../../fields/titleMaxWidth'
+
 export const SectionProcess: Block = {
   slug: 'homeSectionProcess',
   interfaceName: 'SectionProcessBlock',
@@ -34,6 +36,7 @@ export const SectionProcess: Block = {
       defaultValue: 'Um *processo claro*, do briefing ao go-live',
       admin: { description: 'Use *palavra* para laranja. Use \\n para quebra de linha.' },
     },
+    titleMaxWidth,
     {
       name: 'description',
       label: 'Description',

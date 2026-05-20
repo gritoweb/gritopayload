@@ -5,11 +5,13 @@ import type { LatestPortfoliosBlock, Portfolio, Media, PortfolioTag } from '@/pa
 import { PortfolioCardGrid, type PortfolioItem } from '@/blocks/PortfolioListing/PortfolioListingClient'
 import { Button } from '@/components/Button'
 import { parseTitle } from '@/utilities/parseTitle'
+import { titleMaxWidthClass, type TitleMaxWidth } from '@/utilities/titleMaxWidthClass'
 import { ArrowIcon } from '@/components/ui/ArrowIcon'
 
 export const LatestPortfoliosComponent: React.FC<LatestPortfoliosBlock> = async ({
   eyebrow,
   title,
+  titleMaxWidth,
   buttonLabel,
   buttonHref,
 }) => {
@@ -59,7 +61,15 @@ export const LatestPortfoliosComponent: React.FC<LatestPortfoliosBlock> = async 
         <div className="flex items-end  justify-between flex-wrap gap-6 mb-10">
           <header className="flex flex-col gap-3">
             {eyebrow && <p className="font-eyebrow m-0">{eyebrow}</p>}
-            {title && <h2 className="m-0 text-blue">{parseTitle(title)}</h2>}
+            {title && (
+              <h2
+                className={['m-0 text-blue', titleMaxWidthClass(titleMaxWidth as TitleMaxWidth | null | undefined)]
+                  .filter(Boolean)
+                  .join(' ')}
+              >
+                {parseTitle(title)}
+              </h2>
+            )}
           </header>
           {buttonLabel && (
             <Button variant="ghost" href={buttonHref ?? '/portfolio'} icon={<ArrowIcon size={16} />}>

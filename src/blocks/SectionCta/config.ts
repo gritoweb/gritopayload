@@ -1,5 +1,7 @@
 import type { Block } from 'payload'
 
+import { titleMaxWidth } from '../../fields/titleMaxWidth'
+
 export const SectionCta: Block = {
   slug: 'homeSectionCta',
   interfaceName: 'SectionCtaBlock',
@@ -35,6 +37,7 @@ export const SectionCta: Block = {
         description: 'Use *palavra* para destacar em laranja. Use \\n para quebrar linha.',
       },
     },
+    titleMaxWidth,
     {
       name: 'description',
       label: 'Description',

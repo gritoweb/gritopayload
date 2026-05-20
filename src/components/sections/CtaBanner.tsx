@@ -15,6 +15,7 @@ const ctaBannerText: Record<string, { eyebrow: string; title: string; desc: stri
 export function CtaBanner({
   eyebrow,
   title,
+  titleClassName = '',
   description,
   actions,
   media,
@@ -23,6 +24,7 @@ export function CtaBanner({
 }: {
   eyebrow?: string
   title: React.ReactNode
+  titleClassName?: string
   description?: string
   actions?: React.ReactNode
   media?: React.ReactNode
@@ -39,13 +41,14 @@ export function CtaBanner({
     .filter(Boolean)
     .join(' ')
   const tx = ctaBannerText[variant] ?? ctaBannerText.blue
+  const titleClasses = ['m-0', tx.title, titleClassName].filter(Boolean).join(' ')
 
   return (
     <section className={root}>
       <div className={inner}>
         <div className="relative z-10">
           {eyebrow && <p className={`font-eyebrow m-0 mb-2.5 ${tx.eyebrow}`}>{eyebrow}</p>}
-          {title && <h2 className={`m-0 ${tx.title}`}>{title}</h2>}
+          {title && <h2 className={titleClasses}>{title}</h2>}
           {description && <p className={`mt-3.5 max-w-[28rem] ${tx.desc}`}>{description}</p>}
           {actions && <div className="mt-7 flex flex-wrap gap-3">{actions}</div>}
         </div>

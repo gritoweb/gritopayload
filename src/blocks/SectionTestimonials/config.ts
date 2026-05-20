@@ -1,5 +1,7 @@
 import type { Block } from 'payload'
 
+import { titleMaxWidth } from '../../fields/titleMaxWidth'
+
 export const SectionTestimonials: Block = {
   slug: 'homeSectionTestimonials',
   dbName: 'hst',
@@ -23,6 +25,7 @@ export const SectionTestimonials: Block = {
       defaultValue: 'Quem trabalhou com a gente *volta*',
       admin: { description: 'Use *palavra* para laranja. Use \\n para quebra de linha.' },
     },
+    titleMaxWidth,
     {
       name: 'description',
       label: 'Description',

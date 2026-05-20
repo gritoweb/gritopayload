@@ -3,6 +3,7 @@ import type { SectionProjectsBlock } from '@/payload-types'
 import { SectionTitle, ProjectGrid } from '@/components/sections'
 import { Button } from '@/components/Button'
 import { parseTitle } from '@/utilities/parseTitle'
+import { titleMaxWidthClass, type TitleMaxWidth } from '@/utilities/titleMaxWidthClass'
 import { ProjectCard } from '@/home/cards'
 import { TagMark, ArrowCurve } from '@/home/illustrations'
 import { ArrowIcon } from '@/components/ui/ArrowIcon'
@@ -43,6 +44,7 @@ function Motif({ type }: { type: MotifType }) {
 export const SectionProjectsComponent: React.FC<SectionProjectsBlock> = ({
   eyebrow,
   title,
+  titleMaxWidth,
   portfolioLabel,
   portfolioHref,
   projects,
@@ -51,7 +53,11 @@ export const SectionProjectsComponent: React.FC<SectionProjectsBlock> = ({
     <section className="bg-white border-y border-line px-12 py-20">
       <div className="max-w-7xl mx-auto">
         <div className="flex items-end justify-between flex-wrap gap-6 mb-9">
-          <SectionTitle eyebrow={eyebrow} align="left">
+          <SectionTitle
+            eyebrow={eyebrow}
+            align="left"
+            titleClassName={titleMaxWidthClass(titleMaxWidth as TitleMaxWidth | null | undefined)}
+          >
             {parseTitle(title)}
           </SectionTitle>
           {portfolioLabel && (

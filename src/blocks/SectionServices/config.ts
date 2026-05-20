@@ -1,5 +1,7 @@
 import type { Block } from 'payload'
 
+import { titleMaxWidth } from '../../fields/titleMaxWidth'
+
 export const SectionServices: Block = {
   slug: 'homeSectionServices',
   interfaceName: 'SectionServicesBlock',
@@ -22,6 +24,7 @@ export const SectionServices: Block = {
       defaultValue: 'Soluções *inteligentes*\npara o seu negócio',
       admin: { description: 'Use *palavra* para laranja. Use \\n para quebra de linha.' },
     },
+    titleMaxWidth,
     {
       name: 'description',
       label: 'Sidebar description',

@@ -1,5 +1,7 @@
 import type { Block } from 'payload'
 
+import { titleMaxWidth } from '../../fields/titleMaxWidth'
+
 export const PortfolioListing: Block = {
   slug: 'portfolioListing',
   interfaceName: 'PortfolioListingBlock',
@@ -20,6 +22,7 @@ export const PortfolioListing: Block = {
       defaultValue: '*Projetos* que colocamos pra rodar',
       admin: { description: 'Use *palavra* para laranja. Use \\n para quebra de linha.' },
     },
+    titleMaxWidth,
     {
       name: 'showFilters',
       label: 'Mostrar filtros por categoria',

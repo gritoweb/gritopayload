@@ -4,6 +4,7 @@ import React, { useState, useMemo } from 'react'
 import Image from 'next/image'
 import type { Media } from '@/payload-types'
 import { parseTitle } from '@/utilities/parseTitle'
+import { titleMaxWidthClass, type TitleMaxWidth } from '@/utilities/titleMaxWidthClass'
 import { ArrowIcon } from '@/components/ui/ArrowIcon'
 
 // ── Types ─────────────────────────────────────────────────────────────────────
@@ -32,6 +33,7 @@ export type BlogListingClientProps = {
   featuredPost?: FeaturedPostItem | null
   eyebrow?: string | null
   title?: string | null
+  titleMaxWidth?: TitleMaxWidth | null
   postsPerPage: number
   showSearch: boolean
   showFilters: boolean
@@ -191,6 +193,7 @@ export function BlogListingClient({
   featuredPost,
   eyebrow,
   title,
+  titleMaxWidth,
   postsPerPage,
   showSearch,
   showFilters,
@@ -245,7 +248,11 @@ export function BlogListingClient({
         <div className="flex items-baseline justify-between gap-6 flex-wrap mb-6">
           <header className="flex flex-col gap-3 max-w-3xl">
             {eyebrow && <p className="font-eyebrow m-0">{eyebrow}</p>}
-            <h2 className="m-0 text-blue">
+            <h2
+              className={['m-0 text-blue', titleMaxWidthClass(titleMaxWidth)]
+                .filter(Boolean)
+                .join(' ')}
+            >
               {parseTitle(title)}
             </h2>
           </header>

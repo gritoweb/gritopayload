@@ -1,5 +1,7 @@
 import type { Block } from 'payload'
 
+import { titleMaxWidth } from '../../fields/titleMaxWidth'
+
 export const LatestPosts: Block = {
   slug: 'latestPosts',
   interfaceName: 'LatestPostsBlock',
@@ -18,6 +20,7 @@ export const LatestPosts: Block = {
       defaultValue: '*Últimos posts* do blog',
       admin: { description: 'Use *palavra* para laranja. Use \\n para quebra de linha.' },
     },
+    titleMaxWidth,
     {
       name: 'buttonLabel',
       label: 'Botão — texto',

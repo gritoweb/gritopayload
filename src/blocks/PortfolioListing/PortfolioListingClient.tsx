@@ -4,6 +4,7 @@ import React, { useState, useMemo } from 'react'
 import Image from 'next/image'
 import type { Media } from '@/payload-types'
 import { parseTitle } from '@/utilities/parseTitle'
+import { titleMaxWidthClass, type TitleMaxWidth } from '@/utilities/titleMaxWidthClass'
 import { ArrowIcon } from '@/components/ui/ArrowIcon'
 
 // ── Types ─────────────────────────────────────────────────────────────────────
@@ -32,6 +33,7 @@ export type PortfolioListingClientProps = {
   filters: FilterOption[]
   eyebrow?: string | null
   title?: string | null
+  titleMaxWidth?: TitleMaxWidth | null
   showFilters: boolean
   showViewToggle: boolean
 }
@@ -176,6 +178,7 @@ export const PortfolioListingClient: React.FC<PortfolioListingClientProps> = ({
   filters,
   eyebrow,
   title,
+  titleMaxWidth,
   showFilters,
   showViewToggle,
 }) => {
@@ -194,7 +197,14 @@ export const PortfolioListingClient: React.FC<PortfolioListingClientProps> = ({
         <div className="mb-10">
           {eyebrow && <p className="font-eyebrow m-0 mb-3">{eyebrow}</p>}
           {title && (
-            <h2 className="m-0 font-display font-bold text-h2 text-blue leading-tight">
+            <h2
+              className={[
+                'm-0 font-display font-bold text-h2 text-blue leading-tight',
+                titleMaxWidthClass(titleMaxWidth),
+              ]
+                .filter(Boolean)
+                .join(' ')}
+            >
               {parseTitle(title)}
             </h2>
           )}

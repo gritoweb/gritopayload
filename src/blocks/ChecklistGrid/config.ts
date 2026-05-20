@@ -1,5 +1,7 @@
 import type { Block } from 'payload'
 
+import { titleMaxWidth } from '../../fields/titleMaxWidth'
+
 export const ChecklistGrid: Block = {
   slug: 'checklistGrid',
   interfaceName: 'ChecklistGridBlock',
@@ -22,6 +24,7 @@ export const ChecklistGrid: Block = {
       defaultValue: 'Por que *a diferença* nessa parceria',
       admin: { description: 'Use *palavra* para laranja. Use \\n para quebra de linha.' },
     },
+    titleMaxWidth,
     {
       name: 'items',
       label: 'Checklist items',

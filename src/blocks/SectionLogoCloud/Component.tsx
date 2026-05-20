@@ -4,10 +4,12 @@ import type { SectionLogoCloudBlock, Media } from '@/payload-types'
 import { LogoCloud } from '@/components/sections'
 import { LogoMark } from '@/home/cards'
 import { parseTitle } from '@/utilities/parseTitle'
+import { titleMaxWidthClass, type TitleMaxWidth } from '@/utilities/titleMaxWidthClass'
 
 export const SectionLogoCloudComponent: React.FC<SectionLogoCloudBlock> = ({
   eyebrow,
   title,
+  titleMaxWidth,
   description,
   partners,
 }) => {
@@ -15,6 +17,7 @@ export const SectionLogoCloudComponent: React.FC<SectionLogoCloudBlock> = ({
     <LogoCloud
       eyebrow={eyebrow}
       title={title ? parseTitle(title) : undefined}
+      titleClassName={titleMaxWidthClass(titleMaxWidth as TitleMaxWidth | null | undefined)}
       description={description ?? undefined}
       items={(partners ?? []).map((partner) => {
         const logo = partner.logo as Media

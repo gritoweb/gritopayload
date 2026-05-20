@@ -3,11 +3,13 @@ import type { SectionTestimonialsBlock } from '@/payload-types'
 import { SectionTitle } from '@/components/sections/SectionTitle'
 import { TestimonialsSection } from '@/components/sections/TestimonialsSection'
 import { parseTitle } from '@/utilities/parseTitle'
+import { titleMaxWidthClass, type TitleMaxWidth } from '@/utilities/titleMaxWidthClass'
 import { TestimonialsCarousel } from './TestimonialsCarousel.client'
 
 export const SectionTestimonialsComponent: React.FC<SectionTestimonialsBlock> = ({
   eyebrow,
   title,
+  titleMaxWidth,
   description,
   ratingValue,
   reviewCount,
@@ -21,6 +23,7 @@ export const SectionTestimonialsComponent: React.FC<SectionTestimonialsBlock> = 
             eyebrow={eyebrow}
             align="left"
             description={description ?? undefined}
+            titleClassName={titleMaxWidthClass(titleMaxWidth as TitleMaxWidth | null | undefined)}
           >
             {parseTitle(title)}
           </SectionTitle>

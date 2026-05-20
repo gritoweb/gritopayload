@@ -1,5 +1,7 @@
 import type { Block } from 'payload'
 
+import { titleMaxWidth } from '../../fields/titleMaxWidth'
+
 export const BlogListing: Block = {
   slug: 'blogListing',
   interfaceName: 'BlogListingBlock',
@@ -29,6 +31,7 @@ export const BlogListing: Block = {
       defaultValue: '*Últimos posts*',
       admin: { description: 'Use *palavra* para laranja. Use \\n para quebra de linha.' },
     },
+    titleMaxWidth,
     {
       name: 'postsPerPage',
       label: 'Posts per page',

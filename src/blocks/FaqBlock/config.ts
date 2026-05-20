@@ -1,5 +1,7 @@
 import type { Block } from 'payload'
 
+import { titleMaxWidth } from '../../fields/titleMaxWidth'
+
 export const FaqBlock: Block = {
   slug: 'faqBlock',
   interfaceName: 'FaqBlockBlock',
@@ -22,6 +24,7 @@ export const FaqBlock: Block = {
       defaultValue: 'Perguntas *frequentes*',
       admin: { description: 'Use *palavra* para laranja. Use \\n para quebra de linha.' },
     },
+    titleMaxWidth,
     {
       name: 'defaultOpenIndex',
       label: 'Default open index (0-based, -1 to close all)',
