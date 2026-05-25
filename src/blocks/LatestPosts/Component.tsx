@@ -54,30 +54,35 @@ export const LatestPostsComponent: React.FC<LatestPostsBlock> = async ({
   return (
     <section className="px-6 md:px-12 py-20">
       <div className="max-w-7xl mx-auto">
-        <div className="flex items-end justify-between flex-wrap gap-6 mb-10">
-          <header className="flex flex-col gap-3">
-            {eyebrow && <p className="font-eyebrow m-0">{eyebrow}</p>}
-            {title && (
-              <h2
-                className={['m-0 text-blue', titleMaxWidthClass(titleMaxWidth as TitleMaxWidth | null | undefined)]
-                  .filter(Boolean)
-                  .join(' ')}
-              >
-                {parseTitle(title)}
-              </h2>
-            )}
-          </header>
-          {buttonLabel && (
-            <Button variant="ghost" href={buttonHref ?? '/posts'} icon={<ArrowIcon size={16} />}>
+        <div className="mb-10">
+          <header className="flex flex-row items-center justify-between gap-3">
+            <div>
+              {eyebrow && <p className="font-eyebrow m-0">{eyebrow}</p>}
+              {title && (
+                <h2
+                  className={['m-0 text-blue', titleMaxWidthClass(titleMaxWidth as TitleMaxWidth | null | undefined)]
+                    .filter(Boolean)
+                    .join(' ')}
+                >
+                  {parseTitle(title)}
+                </h2>
+              )}
+            </div>
+                    {buttonLabel && (
+          <div className="mt-10">
+            <Button variant="blue" href={buttonHref ?? '/posts'} icon={<ArrowIcon size={16} />}>
               {buttonLabel}
             </Button>
-          )}
+          </div>
+        )}
+          </header>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
           {posts.map((post, i) => (
             <PostCard key={post.id} post={post} index={i} />
           ))}
         </div>
+
       </div>
     </section>
   )

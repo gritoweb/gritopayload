@@ -72,7 +72,7 @@ export function Gallery({ items }: { items: GalleryItem[] }) {
               <button
                 type="button"
                 onClick={() => setOpenIndex(index)}
-                className="relative w-full overflow-hidden rounded-2xl border border-line cursor-zoom-in transition-shadow duration-150 motion-reduce:transition-none hover:shadow-[0_8px_28px_rgba(8,7,23,0.10)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue focus-visible:ring-offset-2 focus-visible:ring-offset-paper"
+                className="relative w-full overflow-hidden rounded-2xl border border-line cursor-zoom-in transition-shadow duration-150 motion-reduce:transition-none hover:shadow-[0_8px_28px_rgba(40,40,40,0.10)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue focus-visible:ring-offset-2 focus-visible:ring-offset-paper"
                 aria-label={item.label ?? item.alt}
               >
                 <div className={`relative w-full overflow-hidden ${accentBg[accent]}`} style={{ aspectRatio: item.width && item.height ? `${item.width}/${item.height}` : '4/3' }}>

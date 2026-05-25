@@ -18,7 +18,7 @@ const sizeClasses: Record<Size, string> = {
 
 const baseClasses = [
   'inline-flex items-center justify-center gap-2',
-  'rounded-full font-display font-medium no-underline',
+  'rounded-full font-display font-normal no-underline',
   'transition-opacity duration-150 cursor-pointer',
   'motion-reduce:transition-none',
   'hover:opacity-90',

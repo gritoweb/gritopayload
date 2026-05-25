@@ -117,7 +117,7 @@ export const Pages: CollectionConfig<'pages'> = {
       index: true,
       admin: {
         position: 'sidebar',
-        description: 'URL slug da página. Use "home" para a página inicial.',
+        description: 'Page URL slug. Use "home" for the homepage.',
       },
     },
   ],

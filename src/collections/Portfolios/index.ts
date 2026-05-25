@@ -31,7 +31,6 @@ export const Portfolios: CollectionConfig<'portfolios'> = {
     useAsTitle: 'title',
   },
   fields: [
-    // ── Campos de listagem (já existentes) ─────────────────────────────
     {
       name: 'title',
       label: 'Project title',
@@ -47,10 +46,10 @@ export const Portfolios: CollectionConfig<'portfolios'> = {
     },
     {
       name: 'summary',
-      label: 'Summary (subtítulo do hero)',
+      label: 'Summary (hero subtitle)',
       type: 'textarea',
       localized: true,
-      admin: { description: 'Aparece abaixo do título na página do case.' },
+      admin: { description: 'Appears below the title on the case page.' },
     },
     {
       name: 'image',
@@ -96,24 +95,24 @@ export const Portfolios: CollectionConfig<'portfolios'> = {
     },
     {
       name: 'result',
-      label: 'Result destaque (card)',
+      label: 'Featured result (card)',
       type: 'text',
       admin: {
         position: 'sidebar',
-        description: 'Exibido no card da listagem. Ex: +38% ticket médio',
+        description: 'Shown on the listing card. Ex: +38% average ticket',
       },
     },
     {
       name: 'siteUrl',
-      label: 'Link do site ao vivo',
+      label: 'Live site link',
       type: 'text',
       admin: { position: 'sidebar' },
     },
     {
       name: 'nextProjectHref',
-      label: 'Link próximo projeto',
+      label: 'Next project link',
       type: 'text',
-      admin: { position: 'sidebar', description: 'Botão "Próximo projeto" no hero.' },
+      admin: { position: 'sidebar', description: '"Next project" button in the hero.' },
     },
     {
       name: 'publishedAt',
@@ -121,101 +120,97 @@ export const Portfolios: CollectionConfig<'portfolios'> = {
       admin: { position: 'sidebar' },
     },
 
-    // ── Meta strip ─────────────────────────────────────────────────────
     {
       type: 'collapsible',
-      label: 'Meta strip (cliente / setor / entregas / duração)',
+      label: 'Meta strip (client / sector / deliverables / duration)',
       admin: { initCollapsed: true },
       fields: [
         {
           name: 'sector',
-          label: 'Setor',
+          label: 'Sector',
           type: 'text',
         },
         {
           name: 'deliverables',
-          label: 'Entregas',
+          label: 'Deliverables',
           type: 'text',
-          admin: { description: 'Ex: Site, POS, Reservas' },
+          admin: { description: 'Ex: Site, POS, Reservations' },
         },
         {
           name: 'duration',
-          label: 'Duração',
+          label: 'Duration',
           type: 'text',
-          admin: { description: 'Ex: 10 semanas' },
+          admin: { description: 'Ex: 10 weeks' },
         },
       ],
     },
 
-    // ── Desafio ────────────────────────────────────────────────────────
     {
       type: 'collapsible',
-      label: 'O desafio',
+      label: 'The challenge',
       admin: { initCollapsed: true },
       fields: [
         {
           name: 'challengeTitle',
-          label: 'Título do desafio',
+          label: 'Challenge title',
           type: 'text',
-          admin: { description: 'Use *palavra* para laranja.' },
+          admin: { description: 'Use *word* for orange.' },
         },
         {
           name: 'challengeBody',
-          label: 'Corpo do desafio',
+          label: 'Challenge body',
           type: 'textarea',
-          admin: { description: 'Parágrafos separados por linha em branco.' },
+          admin: { description: 'Paragraphs separated by a blank line.' },
         },
       ],
     },
 
-    // ── Processo ───────────────────────────────────────────────────────
     {
       name: 'processSteps',
-      label: 'Processo',
+      label: 'Process',
       type: 'array',
       admin: { initCollapsed: true },
       fields: [
         {
           name: 'number',
-          label: 'Número',
+          label: 'Number',
           type: 'text',
           admin: { description: 'Ex: 01' },
         },
         {
           name: 'title',
-          label: 'Título',
+          label: 'Title',
           type: 'text',
         },
         {
           name: 'description',
-          label: 'Descrição',
+          label: 'Description',
           type: 'textarea',
         },
       ],
     },
 
-    // ── Galeria ────────────────────────────────────────────────────────
     {
       name: 'gallery',
-      label: 'Galeria',
+      label: 'Gallery',
       type: 'array',
       admin: { initCollapsed: true },
       fields: [
         {
           name: 'image',
-          label: 'Imagem',
+          label: 'Image',
           type: 'upload',
           relationTo: 'media',
           required: true,
         },
         {
           name: 'label',
-          label: 'Legenda',
+          label: 'Caption',
           type: 'text',
         },
         {
           name: 'accent',
-          label: 'Cor de fundo (fallback)',
+          label: 'Background color (fallback)',
           type: 'select',
           options: [
             { label: 'Blue', value: 'blue' },
@@ -226,89 +221,85 @@ export const Portfolios: CollectionConfig<'portfolios'> = {
       ],
     },
 
-    // ── Big Quote ──────────────────────────────────────────────────────
     {
       type: 'collapsible',
-      label: 'Citação do cliente',
+      label: 'Client quote',
       admin: { initCollapsed: true },
       fields: [
         {
           name: 'quoteText',
-          label: 'Citação',
+          label: 'Quote',
           type: 'textarea',
         },
         {
           name: 'quoteAuthor',
-          label: 'Autor',
+          label: 'Author',
           type: 'text',
         },
         {
           name: 'quoteRole',
-          label: 'Cargo / empresa',
+          label: 'Role / company',
           type: 'text',
         },
       ],
     },
 
-    // ── Resultados ─────────────────────────────────────────────────────
     {
       name: 'stats',
-      label: 'Resultados (números)',
+      label: 'Results (numbers)',
       type: 'array',
       admin: { initCollapsed: true },
       fields: [
         {
           name: 'value',
-          label: 'Valor',
+          label: 'Value',
           type: 'text',
           admin: { description: 'Ex: +38%' },
         },
         {
           name: 'label',
-          label: 'Descrição',
+          label: 'Description',
           type: 'text',
-          admin: { description: 'Ex: Ticket médio após redesign' },
+          admin: { description: 'Ex: Average ticket after redesign' },
         },
       ],
     },
 
-    // ── Equipe & Stack ─────────────────────────────────────────────────
     {
       name: 'team',
-      label: 'Equipe',
+      label: 'Team',
       type: 'array',
       admin: { initCollapsed: true },
       fields: [
         {
           name: 'name',
-          label: 'Nome',
+          label: 'Name',
           type: 'text',
         },
         {
           name: 'role',
-          label: 'Função',
+          label: 'Role',
           type: 'text',
         },
       ],
     },
     {
       name: 'stack',
-      label: 'Stack / ferramental',
+      label: 'Stack / tooling',
       type: 'array',
       admin: { initCollapsed: true },
       fields: [
         {
           name: 'tool',
-          label: 'Ferramenta',
+          label: 'Tool',
           type: 'text',
         },
       ],
     },
 
-    // ── Projetos relacionados ──────────────────────────────────────────
     {
       name: 'relatedPortfolios',
-      label: 'Projetos relacionados',
+      label: 'Related projects',
       type: 'relationship',
       relationTo: 'portfolios',
       hasMany: true,

@@ -5,9 +5,9 @@ import { titleMaxWidth } from '../../fields/titleMaxWidth'
 export const SectionLogoCloud: Block = {
   slug: 'homeSectionLogoCloud',
   interfaceName: 'SectionLogoCloudBlock',
-  labels: { singular: 'Empresas parceiras', plural: 'Empresas parceiras' },
+  labels: { singular: 'Partner Companies', plural: 'Partner Companies' },
   imageURL: '/block-previews/logo-cloud.png',
-  imageAltText: 'Empresas parceiras',
+  imageAltText: 'Partner Companies',
   fields: [
     {
       name: 'eyebrow',
@@ -19,10 +19,10 @@ export const SectionLogoCloud: Block = {
     },
     {
       name: 'title',
-      label: 'Título',
+      label: 'Title',
       type: 'text',
       localized: true,
-      admin: { description: 'Use *palavra* para laranja. Use \\n para quebra de linha.' },
+      admin: { description: 'Use *word* for orange. Use \\n for line break.' },
     },
     titleMaxWidth,
     {

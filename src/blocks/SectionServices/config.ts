@@ -18,11 +18,11 @@ export const SectionServices: Block = {
     },
     {
       name: 'title',
-      label: 'Título',
+      label: 'Title',
       type: 'text',
       localized: true,
       defaultValue: 'Soluções *inteligentes*\npara o seu negócio',
-      admin: { description: 'Use *palavra* para laranja. Use \\n para quebra de linha.' },
+      admin: { description: 'Use *word* for orange. Use \\n for line break.' },
     },
     titleMaxWidth,
     {

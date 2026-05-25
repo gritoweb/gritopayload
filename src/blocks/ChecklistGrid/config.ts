@@ -17,12 +17,12 @@ export const ChecklistGrid: Block = {
     },
     {
       name: 'title',
-      label: 'Título',
+      label: 'Title',
       type: 'text',
       localized: true,
       required: true,
       defaultValue: 'Por que *a diferença* nessa parceria',
-      admin: { description: 'Use *palavra* para laranja. Use \\n para quebra de linha.' },
+      admin: { description: 'Use *word* for orange. Use \\n for line break.' },
     },
     titleMaxWidth,
     {

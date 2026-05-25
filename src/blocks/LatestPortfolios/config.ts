@@ -5,7 +5,7 @@ import { titleMaxWidth } from '../../fields/titleMaxWidth'
 export const LatestPortfolios: Block = {
   slug: 'latestPortfolios',
   interfaceName: 'LatestPortfoliosBlock',
-  labels: { singular: 'Últimos Portfólios', plural: 'Últimos Portfólios' },
+  labels: { singular: 'Latest Portfolios', plural: 'Latest Portfolios' },
   fields: [
     {
       name: 'eyebrow',
@@ -15,21 +15,21 @@ export const LatestPortfolios: Block = {
     },
     {
       name: 'title',
-      label: 'Título',
+      label: 'Title',
       type: 'text',
       defaultValue: '*Últimos projetos* que entregamos',
-      admin: { description: 'Use *palavra* para laranja. Use \\n para quebra de linha.' },
+      admin: { description: 'Use *word* for orange. Use \\n for line break.' },
     },
     titleMaxWidth,
     {
       name: 'buttonLabel',
-      label: 'Botão — texto',
+      label: 'Button — text',
       type: 'text',
       defaultValue: 'Ver portfólio completo',
     },
     {
       name: 'buttonHref',
-      label: 'Botão — link',
+      label: 'Button — link',
       type: 'text',
       defaultValue: '/portfolio',
     },

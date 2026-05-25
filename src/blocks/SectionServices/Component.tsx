@@ -51,7 +51,10 @@ const ServiceIcon = ({ type }: { type: IconType }) => {
           strokeWidth="2"
           aria-hidden="true"
         >
-          <path d="M12 2v20M5 9l7-7 7 7M9 14h6" />
+          <rect x="3" y="4" width="18" height="16" rx="2" />
+          <path d="M3 9h18" />
+          <path d="M7 13h10" />
+          <rect x="7" y="15.5" width="7" height="3" rx="1.5" />
         </svg>
       )
     case 'screen':

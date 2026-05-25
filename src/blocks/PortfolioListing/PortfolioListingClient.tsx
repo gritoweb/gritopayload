@@ -72,7 +72,7 @@ const tagVariantClasses: Record<string, string> = {
 
 function Tag({ children, variant = 'blue' }: { children: React.ReactNode; variant?: 'blue' | 'orange' }) {
   return (
-    <span className={`inline-flex items-center px-3 py-1.5 rounded-full font-body text-xs font-bold uppercase tracking-[0.04em] ${tagVariantClasses[variant]}`}>
+    <span className={`inline-flex items-center px-2.5 py-[5px] opacity-80 rounded-full font-body text-[0.625rem] font-bold  tracking-[0.04em] ${tagVariantClasses[variant]}`}>
       {children}
     </span>
   )
@@ -87,12 +87,10 @@ export function PortfolioCardGrid({ item }: { item: PortfolioItem }) {
   return (
     <a
       href={`/portfolio/${item.slug}`}
-      className="flex flex-col rounded-3xl overflow-hidden bg-white border border-line no-underline text-inherit transition-shadow duration-150 motion-reduce:transition-none hover:shadow-[0_8px_28px_rgba(8,7,23,0.08)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue focus-visible:ring-offset-2 focus-visible:ring-offset-paper"
+      className="group h-full flex flex-col rounded-3xl overflow-hidden bg-white border border-line no-underline text-inherit transition-shadow duration-150 motion-reduce:transition-none hover:shadow-[0_8px_28px_rgba(40,40,40,0.08)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue focus-visible:ring-offset-2 focus-visible:ring-offset-paper"
     >
       <div className={`relative h-[200px] flex items-center justify-center overflow-hidden ${bg}`}>
-        {item.year && (
-          <span className="absolute top-4 right-4 font-body text-xs text-mute">{item.year}</span>
-        )}
+ 
         {imageUrl ? (
           <Image
             src={imageUrl}
@@ -121,9 +119,13 @@ export function PortfolioCardGrid({ item }: { item: PortfolioItem }) {
           <p className="m-0 font-body text-sm font-medium text-blue mt-auto">{item.result}</p>
         )}
       </div>
-      <div className="px-6 pb-5 flex justify-end">
-        <span className="inline-flex items-center gap-1.5 font-display text-sm font-medium text-mute">
-          <ArrowIcon size={14} />
+      <div className="px-6 pb-5">
+        <span className="inline-flex items-center gap-1.5 font-display text-sm font-medium text-blue">
+          Ler mais
+          <ArrowIcon
+            size={14}
+            className="transition-transform duration-150 ease-out group-hover:translate-x-1 motion-reduce:transform-none"
+          />
         </span>
       </div>
     </a>
@@ -134,7 +136,7 @@ function PortfolioCardList({ item }: { item: PortfolioItem }) {
   return (
     <a
       href={`/portfolio/${item.slug}`}
-      className="flex items-center gap-6 rounded-2xl bg-white border border-line p-5 no-underline text-inherit transition-shadow duration-150 motion-reduce:transition-none hover:shadow-[0_4px_16px_rgba(8,7,23,0.06)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue focus-visible:ring-offset-2 focus-visible:ring-offset-paper"
+      className="flex items-center gap-6 rounded-2xl bg-white border border-line p-5 no-underline text-inherit transition-shadow duration-150 motion-reduce:transition-none hover:shadow-[0_4px_16px_rgba(40,40,40,0.06)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue focus-visible:ring-offset-2 focus-visible:ring-offset-paper"
     >
       <div className={`shrink-0 w-16 h-16 rounded-xl flex items-center justify-center overflow-hidden relative ${accentBg[item.accent ?? 'blue']}`}>
         {item.image?.url ? (
@@ -292,11 +294,11 @@ export const PortfolioListingClient: React.FC<PortfolioListingClientProps> = ({
         )}
 
         {view === 'grid' && (
-          <div key="grid" className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div key={`grid-${activeFilter}`} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {filtered.map((item, i) => (
               <div
                 key={item.id}
-                className="animate-in fade-in slide-in-from-bottom-4 duration-500 fill-mode-both motion-reduce:animate-none"
+                className="h-full animate-in fade-in slide-in-from-bottom-4 duration-500 fill-mode-both motion-reduce:animate-none"
                 style={{ animationDelay: `${i * 60}ms` }}
               >
                 <PortfolioCardGrid item={item} />
@@ -306,7 +308,7 @@ export const PortfolioListingClient: React.FC<PortfolioListingClientProps> = ({
         )}
 
         {view === 'list' && (
-          <div key="list" className="flex flex-col gap-3">
+          <div key={`list-${activeFilter}`} className="flex flex-col gap-3">
             {filtered.map((item, i) => (
               <div
                 key={item.id}

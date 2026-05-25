@@ -34,7 +34,7 @@ export const SectionCta: Block = {
       required: true,
       defaultValue: 'Tem um projeto *em mente?*',
       admin: {
-        description: 'Use *palavra* para destacar em laranja. Use \\n para quebrar linha.',
+        description: 'Use *word* to highlight in orange. Use \\n for line break.',
       },
     },
     titleMaxWidth,

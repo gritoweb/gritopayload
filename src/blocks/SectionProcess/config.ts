@@ -15,8 +15,8 @@ export const SectionProcess: Block = {
       type: 'select',
       defaultValue: 'dark',
       options: [
-        { label: 'Escuro (padrão)', value: 'dark' },
-        { label: 'Branco', value: 'white' },
+        { label: 'Dark (default)', value: 'dark' },
+        { label: 'White', value: 'white' },
       ],
     },
     {
@@ -29,12 +29,12 @@ export const SectionProcess: Block = {
     },
     {
       name: 'title',
-      label: 'Título',
+      label: 'Title',
       type: 'text',
       localized: true,
       required: true,
       defaultValue: 'Um *processo claro*, do briefing ao go-live',
-      admin: { description: 'Use *palavra* para laranja. Use \\n para quebra de linha.' },
+      admin: { description: 'Use *word* for orange. Use \\n for line break.' },
     },
     titleMaxWidth,
     {

@@ -65,7 +65,7 @@ const filterPillBase = [
 ].join(' ')
 
 const tagBase =
-  'inline-flex items-center px-3 py-1.5 rounded-full font-body text-xs font-bold uppercase tracking-[0.04em]'
+  'inline-flex items-center px-[10px] py-[5px] rounded-full font-body text-[10px] font-bold lowercase tracking-[0.04em] opacity-80'
 
 const accentBg = ['bg-blue/8', 'bg-orange/10']
 
@@ -84,7 +84,7 @@ export function PostCard({ post, index }: { post: PostItem; index: number }) {
   return (
     <a
       href={`/posts/${post.slug}`}
-      className="flex flex-col bg-white rounded-3xl border border-line overflow-hidden no-underline text-inherit transition-shadow duration-150 motion-reduce:transition-none hover:shadow-[0_8px_28px_rgba(8,7,23,0.06)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue focus-visible:ring-offset-2 focus-visible:ring-offset-paper"
+      className="group flex flex-col bg-white rounded-3xl border border-line overflow-hidden no-underline text-inherit transition-shadow duration-150 motion-reduce:transition-none hover:shadow-[0_8px_28px_rgba(40,40,40,0.06)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue focus-visible:ring-offset-2 focus-visible:ring-offset-paper"
     >
       <div className={`h-[200px] flex items-center justify-center overflow-hidden ${accentBg[index % 2]}`}>
         {imageUrl ? (
@@ -107,17 +107,14 @@ export function PostCard({ post, index }: { post: PostItem; index: number }) {
         <div className="flex items-center gap-2.5">
           {post.categoryLabel && <Tag index={index}>{post.categoryLabel}</Tag>}
         </div>
-        {post.date && (
-          <time dateTime={post.date} className="font-mono text-xs text-mute">
-            {new Intl.DateTimeFormat('pt-BR', { day: '2-digit', month: 'short', year: 'numeric' }).format(
-              new Date(post.date),
-            )}
-          </time>
-        )}
         <h3 className="m-0 font-bold text-[22px] leading-tight">{post.title}</h3>
         {post.excerpt && <p className="m-0 text-sm text-mute line-clamp-3">{post.excerpt}</p>}
         <span className="mt-2 font-display font-medium text-sm text-blue inline-flex items-center gap-1.5">
-          Ler o post <ArrowIcon size={14} />
+          Ler mais
+          <ArrowIcon
+            size={14}
+            className="transition-transform duration-150 ease-out group-hover:translate-x-1 motion-reduce:transform-none"
+          />
         </span>
       </div>
     </a>
@@ -143,21 +140,18 @@ function FeaturedPostBanner({ post }: { post: FeaturedPostItem }) {
         className="grid grid-cols-1 md:grid-cols-[1.15fr_1fr] bg-white rounded-[28px] overflow-hidden border border-line no-underline text-inherit focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue focus-visible:ring-offset-2 focus-visible:ring-offset-paper"
       >
         <div className="relative bg-blue text-white p-12 flex flex-col justify-center min-h-[380px]">
-          <span className="font-body font-bold text-xs uppercase tracking-[0.12em] text-white/85">
-            ⭐ Post em destaque
-          </span>
+ 
           <h2 className="m-0 mt-4 font-display font-bold text-white text-[44px] leading-[1.1]">
             {post.title}
           </h2>
           {post.excerpt && <p className="mt-4 max-w-xl text-white/85">{post.excerpt}</p>}
           <div className="flex flex-wrap items-center gap-4 mt-6 text-sm text-white/90">
             {post.categoryLabel && (
-              <span className="inline-flex items-center px-3 py-1.5 rounded-full font-body text-xs font-bold uppercase tracking-[0.04em] bg-orange text-white">
+              <span className="inline-flex items-center px-2.5 py-[5px] opacity-80 rounded-full font-body text-[0.625rem] font-bold  tracking-[0.04em] bg-orange text-white">
                 {post.categoryLabel}
               </span>
             )}
-            {formattedDate && <time dateTime={post.date ?? undefined}>{formattedDate}</time>}
-          </div>
+           </div>
           <div className="mt-7">
             <span className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-orange text-white font-display font-bold text-sm">
               Ler o post <ArrowIcon size={14} />

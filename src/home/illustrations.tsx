@@ -2,7 +2,7 @@ import React from 'react'
 
 export function Sparkle({
   size = 56,
-  color = '#080717',
+  color = '#282828',
   className = '',
   style,
 }: {

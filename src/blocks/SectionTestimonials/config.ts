@@ -18,12 +18,12 @@ export const SectionTestimonials: Block = {
     },
     {
       name: 'title',
-      label: 'Título',
+      label: 'Title',
       type: 'text',
       localized: true,
       required: true,
       defaultValue: 'Quem trabalhou com a gente *volta*',
-      admin: { description: 'Use *palavra* para laranja. Use \\n para quebra de linha.' },
+      admin: { description: 'Use *word* for orange. Use \\n for line break.' },
     },
     titleMaxWidth,
     {

@@ -48,7 +48,7 @@ export const DefaultHero: React.FC<Page['hero']> = ({
       media={
         media && typeof media !== 'string' ? (
           <div className="relative">
-            <Sparkle size={38} color="#080717" className="absolute top-5 right-12" />
+            <Sparkle size={38} color="#282828" className="absolute top-5 right-12" />
             <Sparkle size={24} color="#FE9D2B" className="absolute bottom-14 left-2.5" />
             <Image
               src={media.url!}

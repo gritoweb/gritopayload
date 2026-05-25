@@ -141,12 +141,12 @@ export const Posts: CollectionConfig<'posts'> = {
     },
     {
       name: 'featuredImage',
-      label: 'Imagem de capa (listagem)',
+      label: 'Cover image (listing)',
       type: 'upload',
       relationTo: 'media',
       admin: {
         position: 'sidebar',
-        description: 'Imagem exibida nos cards de listagem de posts.',
+        description: 'Image shown on post listing cards.',
       },
     },
     {

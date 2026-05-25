@@ -5,7 +5,7 @@ import { titleMaxWidth } from '../../fields/titleMaxWidth'
 export const BlogListing: Block = {
   slug: 'blogListing',
   interfaceName: 'BlogListingBlock',
-  labels: { singular: 'Listagem de Posts', plural: 'Listagens de Posts' },
+  labels: { singular: 'Blog Listing', plural: 'Blog Listings' },
   fields: [
     {
       name: 'featuredPost',
@@ -25,11 +25,11 @@ export const BlogListing: Block = {
     },
     {
       name: 'title',
-      label: 'Título',
+      label: 'Title',
       type: 'text',
       localized: true,
       defaultValue: '*Últimos posts*',
-      admin: { description: 'Use *palavra* para laranja. Use \\n para quebra de linha.' },
+      admin: { description: 'Use *word* for orange. Use \\n for line break.' },
     },
     titleMaxWidth,
     {

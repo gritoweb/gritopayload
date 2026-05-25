@@ -39,7 +39,7 @@ export function ProjectCard({
   return (
     <a
       href={href}
-      className="flex flex-col rounded-3xl overflow-hidden bg-white border border-line no-underline text-inherit transition-shadow duration-150 hover:shadow-[0_8px_28px_rgba(8,7,23,0.08)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue focus-visible:ring-offset-2 focus-visible:ring-offset-paper"
+      className="flex flex-col rounded-3xl overflow-hidden bg-white border border-line no-underline text-inherit transition-shadow duration-150 hover:shadow-[0_8px_28px_rgba(40,40,40,0.08)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue focus-visible:ring-offset-2 focus-visible:ring-offset-paper"
     >
       <div className={`relative h-[180px] flex items-center justify-center overflow-hidden ${accentBg[accent]}`}>
         {year && (
@@ -119,9 +119,13 @@ export function ServiceCard({
       {ctaLabel && href && (
         <a
           href={href}
-          className={`mt-auto inline-flex items-center gap-1.5 font-display font-medium text-sm no-underline ${ctaColor}`}
+          className={`group mt-auto inline-flex items-center gap-1.5 font-display font-medium text-sm no-underline ${ctaColor}`}
         >
-          {ctaLabel} <ArrowIcon size={14} />
+          {ctaLabel}
+          <ArrowIcon
+            size={14}
+            className="transition-transform duration-150 ease-out group-hover:translate-x-1 motion-reduce:transform-none"
+          />
         </a>
       )}
     </div>

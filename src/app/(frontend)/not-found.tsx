@@ -18,7 +18,7 @@ export default function NotFound() {
         <p className="font-eyebrow m-0 mb-4">Erro 404</p>
 
         <div className="relative inline-block mb-6">
-          <Sparkle size={36} color="#080717" className="absolute -top-4 -right-8" />
+          <Sparkle size={36} color="#282828" className="absolute -top-4 -right-8" />
           <Sparkle size={22} color="#FE9D2B" className="absolute -bottom-2 -left-6" />
           <p className="m-0 font-display font-black text-blue text-[5.5rem] leading-none tracking-tight select-none">
             4<span className="text-orange">0</span>4

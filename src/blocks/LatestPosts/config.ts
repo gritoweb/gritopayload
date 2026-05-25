@@ -5,7 +5,7 @@ import { titleMaxWidth } from '../../fields/titleMaxWidth'
 export const LatestPosts: Block = {
   slug: 'latestPosts',
   interfaceName: 'LatestPostsBlock',
-  labels: { singular: 'Últimos Posts', plural: 'Últimos Posts' },
+  labels: { singular: 'Latest Posts', plural: 'Latest Posts' },
   fields: [
     {
       name: 'eyebrow',
@@ -15,21 +15,21 @@ export const LatestPosts: Block = {
     },
     {
       name: 'title',
-      label: 'Título',
+      label: 'Title',
       type: 'text',
       defaultValue: '*Últimos posts* do blog',
-      admin: { description: 'Use *palavra* para laranja. Use \\n para quebra de linha.' },
+      admin: { description: 'Use *word* for orange. Use \\n for line break.' },
     },
     titleMaxWidth,
     {
       name: 'buttonLabel',
-      label: 'Botão — texto',
+      label: 'Button — text',
       type: 'text',
       defaultValue: 'Ver todos os posts',
     },
     {
       name: 'buttonHref',
-      label: 'Botão — link',
+      label: 'Button — link',
       type: 'text',
       defaultValue: '/posts',
     },

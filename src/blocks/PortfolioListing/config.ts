@@ -5,7 +5,7 @@ import { titleMaxWidth } from '../../fields/titleMaxWidth'
 export const PortfolioListing: Block = {
   slug: 'portfolioListing',
   interfaceName: 'PortfolioListingBlock',
-  labels: { singular: 'Listagem de Portfólios', plural: 'Listagens de Portfólios' },
+  labels: { singular: 'Portfolio Listing', plural: 'Portfolio Listings' },
   fields: [
     {
       name: 'eyebrow',
@@ -16,22 +16,22 @@ export const PortfolioListing: Block = {
     },
     {
       name: 'title',
-      label: 'Título',
+      label: 'Title',
       type: 'text',
       localized: true,
       defaultValue: '*Projetos* que colocamos pra rodar',
-      admin: { description: 'Use *palavra* para laranja. Use \\n para quebra de linha.' },
+      admin: { description: 'Use *word* for orange. Use \\n for line break.' },
     },
     titleMaxWidth,
     {
       name: 'showFilters',
-      label: 'Mostrar filtros por categoria',
+      label: 'Show category filters',
       type: 'checkbox',
       defaultValue: true,
     },
     {
       name: 'showViewToggle',
-      label: 'Mostrar toggle Grade / Lista',
+      label: 'Show Grid / List toggle',
       type: 'checkbox',
       defaultValue: true,
     },

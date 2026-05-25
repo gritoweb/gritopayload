@@ -17,12 +17,12 @@ export const SectionProjects: Block = {
     },
     {
       name: 'title',
-      label: 'Título',
+      label: 'Title',
       type: 'text',
       localized: true,
       required: true,
       defaultValue: 'Projetos que *colocamos pra rodar*',
-      admin: { description: 'Use *palavra* para laranja. Use \\n para quebra de linha.' },
+      admin: { description: 'Use *word* for orange. Use \\n for line break.' },
     },
     titleMaxWidth,
     {
@@ -85,7 +85,7 @@ export const SectionProjects: Block = {
         },
         {
           name: 'year',
-          label: 'Ano',
+          label: 'Year',
           type: 'text',
           required: true,
         },
@@ -108,9 +108,9 @@ export const SectionProjects: Block = {
           type: 'select',
           required: true,
           options: [
-            { label: 'Tag Mark (checklist azul)', value: 'tagMark' },
+            { label: 'Tag Mark (blue checklist)', value: 'tagMark' },
             { label: 'Dashboard (mock UI)', value: 'dashboard' },
-            { label: 'Arrow Curve (laranja)', value: 'arrowCurve' },
+            { label: 'Arrow Curve (orange)', value: 'arrowCurve' },
           ],
           defaultValue: 'tagMark',
         },
