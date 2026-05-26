@@ -56,7 +56,7 @@ export const LatestPortfoliosComponent: React.FC<LatestPortfoliosBlock> = async 
   })
 
   return (
-    <section className="px-6 md:px-12 py-20">
+    <section className="px-5 py-20">
       <div className="max-w-7xl mx-auto">
         <div className="flex items-end  justify-between flex-wrap gap-6 mb-10">
           <header className="flex flex-col gap-3">
@@ -71,16 +71,18 @@ export const LatestPortfoliosComponent: React.FC<LatestPortfoliosBlock> = async 
               </h2>
             )}
           </header>
-          {buttonLabel && (
-            <Button variant="ghost" href={buttonHref ?? '/portfolio'} icon={<ArrowIcon size={16} />}>
-              {buttonLabel}
-            </Button>
-          )}
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {portfolios.map((item) => (
             <PortfolioCardGrid key={item.id} item={item} />
           ))}
+        </div>
+        <div>
+          {buttonLabel && (
+            <Button variant="blue" href={buttonHref ?? '/portfolio'} icon={<ArrowIcon size={16} />}>
+              {buttonLabel}
+            </Button>
+          )}
         </div>
       </div>
     </section>
