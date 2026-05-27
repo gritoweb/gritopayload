@@ -136,13 +136,13 @@ export function PostCard({ post, index }: { post: PostItem; index: number }) {
         )}
       </div>
 
-      <div className="px-6 pt-5 pb-6 flex flex-col gap-2.5">
+      <div className="px-6 pt-5 pb-6 flex flex-col gap-2.5 flex-1">
         <div className="flex items-center gap-2.5">
           {post.categoryLabel && <Tag index={index}>{post.categoryLabel}</Tag>}
         </div>
         <h3 className="m-0 font-bold text-[22px] leading-tight">{post.title}</h3>
         {post.excerpt && <p className="m-0 text-sm text-mute line-clamp-3">{post.excerpt}</p>}
-        <span aria-hidden="true" className="mt-2 font-display font-bold text-sm text-blue inline-flex items-center gap-1.5">
+        <span aria-hidden="true" className="mt-auto pt-2 font-display font-bold text-sm text-blue inline-flex items-center gap-1.5">
           Ler mais
           <ArrowIcon
             size={24}
@@ -422,7 +422,7 @@ export function BlogListingClient({
         )}
 
         {slice.length > 0 ? (
-          <div key={safePage} className="grid grid-cols-1 md:grid-cols-3 gap-5">
+          <div key={`${activeFilter}-${safePage}`} className="grid grid-cols-1 md:grid-cols-3 gap-5">
             {slice.map((post, i) => (
               <div
                 key={post.id}
