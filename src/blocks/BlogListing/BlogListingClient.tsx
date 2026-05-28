@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useState, useMemo } from 'react'
-import { FadeInImage } from '@/components/ui/FadeInImage'
+import Image from 'next/image'
 import type { Media } from '@/payload-types'
 import { parseTitle } from '@/utilities/parseTitle'
 import { titleMaxWidthClass, type TitleMaxWidth } from '@/utilities/titleMaxWidthClass'
@@ -121,7 +121,7 @@ export function PostCard({ post, index }: { post: PostItem; index: number }) {
     >
       <div className={`h-[200px] flex items-center justify-center overflow-hidden ${accentBg[index % 2]}`}>
         {imageUrl ? (
-          <FadeInImage
+          <Image
             src={imageUrl}
             alt={image?.alt ?? post.title}
             width={600}
@@ -197,7 +197,7 @@ function FeaturedPostBanner({ post }: { post: FeaturedPostItem }) {
         </div>
         <div className="bg-paper-dim flex items-center justify-center p-10 relative">
           {imageUrl ? (
-            <FadeInImage
+            <Image
               src={imageUrl}
               alt={post.image?.alt ?? post.title}
               width={400}

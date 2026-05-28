@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect, useCallback } from 'react'
 import Image from 'next/image'
-import { FadeInImage } from '@/components/ui/FadeInImage'
 
 export type GalleryItem = {
   url: string
@@ -77,7 +76,7 @@ export function Gallery({ items }: { items: GalleryItem[] }) {
                 aria-label={item.label ?? item.alt}
               >
                 <div className={`relative w-full overflow-hidden ${accentBg[accent]}`} style={{ aspectRatio: item.width && item.height ? `${item.width}/${item.height}` : '4/3' }}>
-                  <FadeInImage
+                  <Image
                     src={item.url}
                     alt={item.alt}
                     fill

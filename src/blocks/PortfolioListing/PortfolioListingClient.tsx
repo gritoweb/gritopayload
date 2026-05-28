@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useState, useMemo } from 'react'
-import { FadeInImage } from '@/components/ui/FadeInImage'
+import Image from 'next/image'
 import type { Media } from '@/payload-types'
 import { parseTitle } from '@/utilities/parseTitle'
 import { titleMaxWidthClass, type TitleMaxWidth } from '@/utilities/titleMaxWidthClass'
@@ -124,7 +124,7 @@ export function PortfolioCardGrid({ item }: { item: PortfolioItem }) {
     >
       <div className={`relative h-[200px] flex items-center justify-center overflow-hidden ${bg}`}>
         {imageUrl ? (
-          <FadeInImage
+          <Image
             src={imageUrl}
             alt={item.image?.alt ?? item.title}
             fill
@@ -170,7 +170,7 @@ function PortfolioCardList({ item }: { item: PortfolioItem }) {
     >
       <div className={`shrink-0 w-16 h-16 rounded-xl flex items-center justify-center overflow-hidden relative ${accentBg[item.accent ?? 'blue']}`}>
         {item.image?.url ? (
-          <FadeInImage
+          <Image
             src={item.image.url}
             alt={item.image.alt ?? item.title}
             fill
