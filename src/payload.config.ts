@@ -79,6 +79,9 @@ const generateURL: GenerateURL = ({ doc }) => {
 export default buildConfig({
   admin: {
     user: Users.slug,
+    components: {
+      providers: ['@/components/admin/BlockScrollProvider#default'],
+    },
     importMap: {
       baseDir: path.resolve(dirname),
     },

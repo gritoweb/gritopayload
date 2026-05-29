@@ -56,6 +56,18 @@ function LivePage({
     depth: 2,
   })
 
+  useEffect(() => {
+    const handleMessage = (e: MessageEvent) => {
+      if (e.data?.type !== 'SCROLL_TO_BLOCK') return
+      const blockIndex = e.data.blockIndex
+      if (typeof blockIndex !== 'number') return
+      const el = document.querySelector(`[data-block-index="${blockIndex}"]`)
+      el?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    }
+    window.addEventListener('message', handleMessage)
+    return () => window.removeEventListener('message', handleMessage)
+  }, [])
+
   return (
     <>
       <RenderHero {...data.hero} />

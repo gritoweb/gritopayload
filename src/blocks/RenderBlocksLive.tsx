@@ -1,6 +1,6 @@
 'use client'
 
-import React, { Fragment, type ReactNode } from 'react'
+import React, { type ReactNode } from 'react'
 
 import type { Page } from '@/payload-types'
 
@@ -56,12 +56,12 @@ export function RenderBlocksLive({
       {blocks.map((block, index) => {
         const key = getBlockKey(block, index)
         const preRendered = asyncBlocks[key]
-        if (preRendered) return <Fragment key={key}>{preRendered}</Fragment>
+        if (preRendered) return <div key={key} data-block-index={index}>{preRendered}</div>
 
         const Block = syncBlockComponents[block.blockType as keyof typeof syncBlockComponents]
         if (!Block) return null
         return (
-          <div key={key}>
+          <div key={key} data-block-index={index}>
             <Block {...(block as any)} />
           </div>
         )
