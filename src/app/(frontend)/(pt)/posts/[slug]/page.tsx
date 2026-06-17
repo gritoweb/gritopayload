@@ -71,16 +71,34 @@ export default async function PostPage({ params: paramsPromise }: Args) {
 
   return (
     <>
-      {/* ── Breadcrumb ──────────────────────────────────────────────── */}
-      <div className="px-5 pt-6">
-        <div className="max-w-7xl mx-auto">
-          <Breadcrumb items={breadcrumbItems} />
-        </div>
-      </div>
 
+
+      {/* ── Featured image ──────────────────────────────────────────── */}
+      {featuredImage?.url && (
+        <div className="px-5 mt-20">
+          <div className="max-w-3xl mx-auto">
+            <div className="relative rounded-3xl overflow-hidden bg-blue/8" style={{ aspectRatio: featuredImage.width && featuredImage.height ? `${featuredImage.width}/${featuredImage.height}` : '16/9' }}>
+              <Image
+                src={featuredImage.url}
+                alt={featuredImage.alt ?? p.title}
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 768px"
+                priority
+              />
+            </div>
+          </div>
+        </div>
+      )}
       {/* ── Hero ────────────────────────────────────────────────────── */}
-      <section className="px-5 py-10 md:py-14">
+      <section className="px-5 pt-10 md:pt-14">
         <div className="max-w-3xl mx-auto">
+
+          <h1 className="m-0 text-blue">{parseTitle(p.title)}</h1>
+
+          {p.excerpt && (
+            <p className="mt-4 text-ink-soft text-lg leading-relaxed">{p.excerpt}</p>
+          )}
           <div className="flex flex-wrap gap-2 mb-5">
             {tags.map((tag) => (
               <span
@@ -91,13 +109,6 @@ export default async function PostPage({ params: paramsPromise }: Args) {
               </span>
             ))}
           </div>
-
-          <h1 className="m-0 text-blue">{parseTitle(p.title)}</h1>
-
-          {p.excerpt && (
-            <p className="mt-4 text-ink-soft text-lg leading-relaxed">{p.excerpt}</p>
-          )}
-
           <div className="flex flex-wrap items-center gap-5 mt-7">
             {authors.length > 0 && (
               <div className="flex items-center gap-3">
@@ -115,32 +126,17 @@ export default async function PostPage({ params: paramsPromise }: Args) {
                 </span>
               </div>
             )}
+
             {publishedDate && (
-              <time dateTime={p.publishedAt ?? undefined} className="font-mono text-xs text-mute">
+              <time dateTime={p.publishedAt ?? undefined} className="font-body font-bold text-xs text-mute">
                 {publishedDate}
               </time>
             )}
           </div>
+
         </div>
       </section>
 
-      {/* ── Featured image ──────────────────────────────────────────── */}
-      {featuredImage?.url && (
-        <div className="px-5 pb-12">
-          <div className="max-w-3xl mx-auto">
-            <div className="relative rounded-3xl overflow-hidden bg-blue/8" style={{ aspectRatio: featuredImage.width && featuredImage.height ? `${featuredImage.width}/${featuredImage.height}` : '16/9' }}>
-              <Image
-                src={featuredImage.url}
-                alt={featuredImage.alt ?? p.title}
-                fill
-                className="object-cover"
-                sizes="(max-width: 768px) 100vw, 768px"
-                priority
-              />
-            </div>
-          </div>
-        </div>
-      )}
 
       {/* ── Content ─────────────────────────────────────────────────── */}
       <section className="px-5 pb-16">
